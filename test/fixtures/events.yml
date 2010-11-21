@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+party:
+  id: 1
+  name: Party
+  eventDate: 2010-11-17
+  startTime: 18:00:00
+  endTime: 22:00:00
+  note: Ooh Yeah
+
+wedding:
+  id: 2
+  name: Wedding
+  eventDate: 2010-11-19
+  startTime: 5:00:00
+  endTime: 23:00:00
+  note: dont be late

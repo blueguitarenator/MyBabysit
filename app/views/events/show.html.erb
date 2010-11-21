@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @event.name %>
+</p>
+
+<p>
+  <b>Eventdate:</b>
+  <%=h @event.eventDate %>
+</p>
+
+<p>
+  <b>Starttime:</b>
+  <%=h @event.startTime %>
+</p>
+
+<p>
+  <b>Endtime:</b>
+  <%=h @event.endTime %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @event.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

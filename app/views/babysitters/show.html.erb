@@ -1,0 +1,33 @@
+<p>
+  <b>Lastname:</b>
+  <%=h @babysitter.lastName %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%=h @babysitter.firstName %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @babysitter.email %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @babysitter.city %>
+</p>
+
+<p>
+  <b>Stateabbr:</b>
+  <%=h @babysitter.stateAbbr %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @babysitter.zip %>
+</p>
+
+
+<%= link_to 'Edit', edit_babysitter_path(@babysitter) %> |
+<%= link_to 'Back', babysitters_path %>

@@ -1,0 +1,20 @@
+<h1>Editing reply</h1>
+
+<% form_for(@reply) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :answer %><br />
+    <%= f.text_field :answer %>
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @reply %> |
+<%= link_to 'Back', replies_path %>

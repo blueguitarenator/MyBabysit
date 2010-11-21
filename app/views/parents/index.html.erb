@@ -1,0 +1,30 @@
+<h1>Listing parents</h1>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Stateabbr</th>
+    <th>Zip</th>
+  </tr>
+
+<% @parents.each do |parent| %>
+  <tr>
+    <td><%=h parent.lastName %></td>
+    <td><%=h parent.firstName %></td>
+    <td><%=h parent.email %></td>
+    <td><%=h parent.city %></td>
+    <td><%=h parent.stateAbbr %></td>
+    <td><%=h parent.zip %></td>
+    <td><%= link_to 'Show', parent %></td>
+    <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
+    <td><%= link_to 'Destroy', parent, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New parent', new_parent_path %>

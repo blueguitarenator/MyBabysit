@@ -1,0 +1,30 @@
+<h1>Listing babysitters</h1>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Stateabbr</th>
+    <th>Zip</th>
+  </tr>
+
+<% @babysitters.each do |babysitter| %>
+  <tr>
+    <td><%=h babysitter.lastName %></td>
+    <td><%=h babysitter.firstName %></td>
+    <td><%=h babysitter.email %></td>
+    <td><%=h babysitter.city %></td>
+    <td><%=h babysitter.stateAbbr %></td>
+    <td><%=h babysitter.zip %></td>
+    <td><%= link_to 'Show', babysitter %></td>
+    <td><%= link_to 'Edit', edit_babysitter_path(babysitter) %></td>
+    <td><%= link_to 'Destroy', babysitter, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New babysitter', new_babysitter_path %>

@@ -1,0 +1,13 @@
+<p>
+  <b>Answer:</b>
+  <%=h @reply.answer %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @reply.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_reply_path(@reply) %> |
+<%= link_to 'Back', replies_path %>

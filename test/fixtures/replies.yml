@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  answer: Yes
+  note: asdf
+
+two:
+  id: 2
+  answer: No
+  note: asdf
+
+three:
+  id: 3
+  answer: Yes
+  note: asdf
+
+four:
+  id: 4
+  answer: No
+  note: asdf

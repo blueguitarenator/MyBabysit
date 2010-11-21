@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+rich:
+  id: 1
+  lastName: Johnson
+  firstName: Rich
+  email: rich@msn.com
+  password: asdf
+  city: ofallon
+  stateAbbr: MO
+  zip: 63368
+
+kristy:
+  id: 2
+  lastName: Reidelberger
+  firstName: Kristy
+  email: kristy@msn.com
+  password: asdf
+  city: ofallon
+  stateAbbr: MO
+  zip: 63368

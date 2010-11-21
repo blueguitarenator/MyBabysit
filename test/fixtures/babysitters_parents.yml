@@ -1,0 +1,23 @@
+one:
+  parent_id: 1
+  babysitter_id: 1
+  
+two:
+  parent_id: 1
+  babysitter_id: 2
+
+three:
+  parent_id: 1
+  babysitter_id: 3
+
+four:
+  parent_id: 2
+  babysitter_id: 1
+  
+five:
+  parent_id: 2
+  babysitter_id: 2
+  
+six:
+  parent_id: 2
+  babysitter_id: 3

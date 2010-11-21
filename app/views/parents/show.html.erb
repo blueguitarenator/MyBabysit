@@ -1,0 +1,33 @@
+<p>
+  <b>Lastname:</b>
+  <%=h @parent.lastName %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%=h @parent.firstName %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @parent.email %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @parent.city %>
+</p>
+
+<p>
+  <b>Stateabbr:</b>
+  <%=h @parent.stateAbbr %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @parent.zip %>
+</p>
+
+
+<%= link_to 'Edit', edit_parent_path(@parent) %> |
+<%= link_to 'Back', parents_path %>
