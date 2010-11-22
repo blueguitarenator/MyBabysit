@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  def test_should_have_working_associations
+    assert_working_associations
   end
+
 end

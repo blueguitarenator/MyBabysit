@@ -21,11 +21,11 @@ morgan:
   zip: 63368
   
 leslie:
-    id: 3
-    lastName: Steimel
-    firstName: Leslie
-    email: leslie@msn.com
-    password: asdf
-    city: ofallon
-    stateAbbr: MO
-    zip: 63368
+  id: 3
+  lastName: Steimel
+  firstName: Leslie
+  email: leslie@msn.com
+  password: asdf
+  city: ofallon
+  stateAbbr: MO
+  zip: 63368

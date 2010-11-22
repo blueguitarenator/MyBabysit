@@ -19,3 +19,13 @@ kristy:
   city: ofallon
   stateAbbr: MO
   zip: 63368
+
+janet:
+  id: 3
+  lastName: Reed
+  firstName: Janet
+  email: janet@msn.com
+  password: asdf
+  city: ofallon
+  stateAbbr: MO
+  zip: 63368
