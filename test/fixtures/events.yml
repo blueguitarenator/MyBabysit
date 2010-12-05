@@ -2,7 +2,7 @@
 
 party:
   id: 1
-  parent_id: 1
+  user_id: 1
   name: Party
   eventDate: 2010-11-17
   startTime: 18:00:00
@@ -11,7 +11,7 @@ party:
 
 wedding:
   id: 2
-  parent_id: 1
+  user_id: 1
   name: Wedding
   eventDate: 2010-11-19
   startTime: 5:00:00
@@ -20,6 +20,7 @@ wedding:
 
 dinner:
   id: 3
+  user_id: 1
   name: bc
   eventDate: 2010-11-24
   startTime: 5:00:00

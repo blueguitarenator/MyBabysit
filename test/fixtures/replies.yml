@@ -3,27 +3,27 @@
 one:
   id: 1
   event_id: 1
-  babysitter_id: 1
+  user_id: 1
   answer: Yes
   note: asdf
 
 two:
   id: 2
   event_id: 1
-  babysitter_id: 2
+  user_id: 2
   answer: No
   note: asdf
 
 three:
   id: 3
   event_id: 2
-  babysitter_id: 2
+  user_id: 2
   answer: Yes
   note: asdf
 
 four:
   id: 4
   event_id: 2
-  babysitter_id: 1
+  user_id: 1
   answer: No
   note: asdf
