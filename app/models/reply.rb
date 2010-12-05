@@ -1,4 +1,4 @@
 class Reply < ActiveRecord::Base
-  belongs_to :babysitter
+  belongs_to :user
   belongs_to :event
 end

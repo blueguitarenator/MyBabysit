@@ -5,7 +5,7 @@ amanda:
   lastName: Barker
   firstName: Amanda
   email: amanda@msn.com
-  password: asdf
+  hashed_password: asdf
   city: ofallon
   stateAbbr: MO
   zip: 63368
@@ -15,7 +15,7 @@ morgan:
   lastName: Taylor
   firstName: Morgan
   email: morgan@msn.com
-  password: asdf
+  hashed_password: asdf
   city: ofallon
   stateAbbr: MO
   zip: 63368
@@ -25,7 +25,7 @@ leslie:
   lastName: Steimel
   firstName: Leslie
   email: leslie@msn.com
-  password: asdf
+  hashed_password: asdf
   city: ofallon
   stateAbbr: MO
   zip: 63368

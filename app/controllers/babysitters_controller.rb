@@ -1,8 +1,10 @@
 class BabysittersController < ApplicationController
+  filter_parameter_logging :password, :password_confirmation
+  
   # GET /babysitters
   # GET /babysitters.xml
   def index
-    @babysitters = Babysitter.all
+    @babysitters = Babysitter.find(:all, :order => :last_name)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,7 +36,7 @@ class BabysittersController < ApplicationController
 
   # GET /babysitters/1/edit
   def edit
-    @babysitter = Babysitter.find(params[:id])
+    @babysitter = current_user
   end
 
   # POST /babysitters
@@ -44,7 +46,8 @@ class BabysittersController < ApplicationController
 
     respond_to do |format|
       if @babysitter.save
-        format.html { redirect_to(@babysitter, :notice => 'Babysitter was successfully created.') }
+        flash[:notice] = "Babysitter #{@babysitter.last_name} was successfully created."
+        format.html { redirect_to(root_url) }
         format.xml  { render :xml => @babysitter, :status => :created, :location => @babysitter }
       else
         format.html { render :action => "new" }
@@ -56,11 +59,14 @@ class BabysittersController < ApplicationController
   # PUT /babysitters/1
   # PUT /babysitters/1.xml
   def update
-    @babysitter = Babysitter.find(params[:id])
+    puts "==================================="
+    logger.info("************ Updating user: " + current_user + " ********************")
+    @babysitter = current_user
 
     respond_to do |format|
       if @babysitter.update_attributes(params[:babysitter])
-        format.html { redirect_to(@babysitter, :notice => 'Babysitter was successfully updated.') }
+        flash[:notice] = "Babysitter #{@babysitter.last_name} was successfully updated."
+        format.html { redirect_to(:action => 'index') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

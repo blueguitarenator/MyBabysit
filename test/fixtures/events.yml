@@ -17,3 +17,11 @@ wedding:
   startTime: 5:00:00
   endTime: 23:00:00
   note: dont be late
+
+dinner:
+  id: 3
+  name: bc
+  eventDate: 2010-11-24
+  startTime: 5:00:00
+  endTime: 22:00:00
+  note: thanks
