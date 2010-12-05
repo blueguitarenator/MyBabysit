@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20101204171211) do
     t.string   "last_login_ip"
   end
 
-  create_table "users_friends", :force => true do |t|
+  create_table "users_friends", :id => false, :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at"

@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.login "login", :controller => "user_sessions", :action => "new", :conditions => {:method => :get}
-  map.login "login", :controller => "user_sessions", :action => "create", :conditions => {:method => :post}
+  map.login "login", :controller => "sessions", :action => "new", :conditions => {:method => :get}
+  map.login "login", :controller => "sessions", :action => "create", :conditions => {:method => :post}
   
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.logout "logout", :controller => "sessions", :action => "destroy"
   # You should use the below line instead of the above line.
-  #map.logout "logout", :controller => "user_sessions", :action => "destroy", :conditions => {:method => :delete}
+  #map.logout "logout", :controller => "sessions", :action => "destroy", :conditions => {:method => :delete}
   map.resources :replies
 
   map.resources :events

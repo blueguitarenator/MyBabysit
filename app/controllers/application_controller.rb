@@ -3,17 +3,17 @@
 
 class ApplicationController < ActionController::Base
   #helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user
+  helper_method :current_session, :current_user
   filter_parameter_logging :password
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   private
-    def current_user_session
-      @current_user_session ||= UserSession.find
+    def current_session
+      @current_session ||= Session.find(1)
     end
     
     def current_user
-      @current_user ||= current_user_session && current_user_session.record
+      @current_user ||= current_session && current_session.record
     end
     
     def require_user
