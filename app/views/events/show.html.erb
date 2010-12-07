@@ -23,6 +23,11 @@
   <%=h @event.note %>
 </p>
 
+<% unless @event.replies.empty? %>
+  <%= render :partial => "/replies/reply",
+	:collection => @event.replies %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', user_url(current_user) %>

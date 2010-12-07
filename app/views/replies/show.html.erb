@@ -8,6 +8,7 @@
   <%=h @reply.note %>
 </p>
 
-
-<%= link_to 'Edit', edit_reply_path(@reply) %> |
-<%= link_to 'Back', replies_path %>
+<% if @reply.user_id == @user.id %>
+	<%= link_to 'Edit', edit_reply_path(@reply) %>
+<% end %>
+<%= link_to 'Back', user_url(current_user) %>

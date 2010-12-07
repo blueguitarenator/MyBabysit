@@ -1,10 +1,6 @@
 
 <h1> My Homepage - <%=h @user.first_name %> <%=h @user.last_name%> </h1>
 
-Content coming soon
-
-
-<!--
 <p>
   <b>Lastname:</b>
   <%=h @user.last_name %>
@@ -20,8 +16,40 @@ Content coming soon
   <%=h @user.email %>
 </p>
 
-<br />
-<%= link_to 'Back', users_path %>
-<br /><%= link_to 'Edit', edit_user_path(@user) %>
+<p>
+  <b>Acct:</b>
+  <%=h @user.accttype %>
+</p>
 
--->
+<% unless @user.events.empty? %>
+  <%= render :partial => "/events/event",
+	:collection => @user.events %>
+<% end %>
+
+<h1> My Babysitter Network </h1>
+<% form_for @user, search_path do |f| %>
+    <fieldset>
+        <legend>Search Users</legend>
+
+        <% f.fields_for @search do |users| %>
+            <%= users.label :first_name_keywords %><br />
+            <%= users.text_field :first_name_keywords %><br />
+            <br />
+        <% end %>
+    </fieldset>
+    <%= f.submit "Search" %>
+<% end %>
+
+<% unless @user.friends.empty? %>
+  <%= render :partial => "/users/friend",
+	:collection => @user.friends %>
+<% end %>
+
+<% unless @user.replies.empty? %>
+  <%= render :partial => "/replies/reply",
+	:collection => @user.replies %>
+<% end %>
+
+<% if @user.accttype != "babysitter" %>
+	<br /><%= link_to 'New Event', new_event_path %>
+<% end %>

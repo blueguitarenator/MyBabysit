@@ -28,5 +28,15 @@
   </p>
 <% end %>
 
+<% unless @event.replies.empty? %>
+  <%= render :partial => "/replies/reply",
+	:collection => @event.replies %>
+<% end %>
+
+<% unless @user.friends.empty? %>
+  <%= render :partial => "/users/friend",
+	:collection => @user.friends %>
+<% end %>
+
 <%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', user_url(current_user) %>

@@ -1,22 +1,28 @@
 class UsersController < ApplicationController
 
+  # POST /users/search
+  def search
+    @user = current_user
+    @search = User.new_search(params[:search])
+    @users, @users_count = @search.all, @search.count  
+  end
+  
+  # GET /users/add_friend
+  def add_friend
+    
+  end
+  
   # GET /users
   # GET /users.xml
   def index
     redirect_to login_url
-   # @users = User.find(:all, :order => :last_name)
-
-   # respond_to do |format|
-   #   format.html # index.html.erb
-   #   format.xml  { render :xml => @users }
-   # end
   end
 
   # GET /users/1
   # GET /users/1.xml
   def show
     @user = current_user #User.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

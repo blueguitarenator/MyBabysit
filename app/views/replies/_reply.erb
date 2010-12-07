@@ -1,0 +1,34 @@
+<h1>My replies</h1>
+
+<table>
+  <tr>
+    <th>Answer</th>
+    <th>Note</th>
+	<th>Name</th>
+  </tr>
+
+<% if @user.accttype == 'parent' %>
+	<% @event.replies.each do |reply| %>
+	  <tr>
+	    <td><%=h reply.answer %></td>
+	    <td><%=h reply.note %></td>
+		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
+	  </tr>
+	<% end %>
+<% else %>
+	<% @user.replies.each do |reply| %>
+	<tr>
+	  <td><%=h reply.answer %></td>
+	  <td><%=h reply.note %></td>
+		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
+	  <td><%= link_to 'Show', reply %></td>
+	  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
+	  <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
+	
+<% end %>
+</table>
+
+
+

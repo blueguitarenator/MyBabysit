@@ -1,0 +1,26 @@
+<h1> My Events </h1>
+
+<table>
+  <tr>
+	<th>Babysitter</th>
+    <th>Name</th>
+    <th>Eventdate</th>
+    <th>Starttime</th>
+    <th>Endtime</th>
+    <th>Note</th>
+  </tr>
+
+<% @user.events.each do |event| %>
+  <tr>
+	<td><%=h event.sitter_name %>
+    <td><%=h event.name %></td>
+    <td><%=h event.eventDate %></td>
+    <td><%=h event.startTime %></td>
+    <td><%=h event.endTime %></td>
+    <td><%=h event.note %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

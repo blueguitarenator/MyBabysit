@@ -8,19 +8,11 @@ class User < ActiveRecord::Base
                             :association_foreign_key => "friend_id"
                      
   has_many  :replies
-  #has_and_belongs_to_many :parents
 
   validates_presence_of :email
   validates_uniqueness_of :email
-
-  #def add_parent(parent)
-  #  parents << parent
-  #end
  
   has_many :events
-  # has_and_belongs_to_many :babysitters
-  # validates_presence_of :email
-  # validates_uniqueness_of :email
        
   def add_friend(friend)
     self.friends << friend unless self.friends.include?(friend) || friend == self

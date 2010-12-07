@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
+
   # GET /events
   # GET /events.xml
   def index
+    # delete this
     @events = Event.all
 
     respond_to do |format|
@@ -13,6 +15,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
+    @user = current_user
     @event = Event.find(params[:id])
 
     respond_to do |format|
@@ -34,50 +37,37 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @user = current_user
+    @event = current_user.events.find(params[:id])
   end
 
   # POST /events
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
+    if (current_user.events << @event)
+      redirect_to user_url(current_user)
+    else
+      render :action => :new
     end
   end
 
   # PUT /events/1
   # PUT /events/1.xml
   def update
-    @event = Event.find(params[:id])
-
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
+    @event = current_user.events.find(params[:id])
+    if (@event.update_attributes(params[:event]))
+      redirect_to user_url(current_user)
+    else
+      render :action => :edit
     end
   end
 
   # DELETE /events/1
   # DELETE /events/1.xml
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(events_url) }
-      format.xml  { head :ok }
-    end
+    event = current_user.events.find(params[:id])
+    current_user.events.delete(event)
+    redirect_to user_url(current_user)
   end
 end

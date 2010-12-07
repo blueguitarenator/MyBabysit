@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-
+  map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :post}
+  map.add_friend '/users/add_friend', :controller => 'users', :action => 'add_friend'
   map.login "login", :controller => "sessions", :action => "new", :conditions => {:method => :get}
   map.login "login", :controller => "sessions", :action => "create", :conditions => {:method => :post}
   
@@ -12,6 +13,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
+  map.resources :users, :has_many => :events
+  map.resources :users, :has_many => :replies
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -21,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
-
+  
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
 

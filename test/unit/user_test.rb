@@ -105,4 +105,8 @@ class UserTest < ActiveSupport::TestCase
         :user_id => amanda.id)
     end
   end
+  
+  def test_search
+    
+  end
 end
