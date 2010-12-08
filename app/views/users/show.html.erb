@@ -27,17 +27,20 @@
 <% end %>
 
 <h1> My Babysitter Network </h1>
-<% form_for @user, search_path do |f| %>
+<% form_tag search_path, :method => :get do %>
     <fieldset>
-        <legend>Search Users</legend>
-
-        <% f.fields_for @search do |users| %>
-            <%= users.label :first_name_keywords %><br />
-            <%= users.text_field :first_name_keywords %><br />
-            <br />
-        <% end %>
+        <legend>Search Users - Choose one or many</legend>
+        <%= label_tag :first_name_keywords %><br />
+        <%= text_field_tag :first_name_keywords %><br />
+        <br />
+        <%= label_tag :last_name_keywords %><br />
+        <%= text_field_tag :last_name_keywords %><br />
+        <br />
+        <%= label_tag :email_keywords %><br />
+        <%= text_field_tag :email_keywords %><br />
+        <br />
     </fieldset>
-    <%= f.submit "Search" %>
+    <%= submit_tag "Search" %>
 <% end %>
 
 <% unless @user.friends.empty? %>

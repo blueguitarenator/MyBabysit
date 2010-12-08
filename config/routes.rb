@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :post}
+  map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :get}
   map.add_friend '/users/add_friend', :controller => 'users', :action => 'add_friend'
   map.login "login", :controller => "sessions", :action => "new", :conditions => {:method => :get}
   map.login "login", :controller => "sessions", :action => "create", :conditions => {:method => :post}

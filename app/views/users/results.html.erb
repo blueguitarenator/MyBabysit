@@ -1,19 +1,20 @@
-<h1>Search Results</h1>
+<h1> Search Results</h1>
 
 <% if @users_count > 0 %>
     <%= @users_count %> users found
 
     <table border="1" cellpadding="5">
         <tr>
-            <th><%= order_by_link :first_name %></th>
-            <th><%= order_by_link :last_name %></th>
-            <th><%= order_by_link [:email, :first_name] %></th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
         </tr>
         <% @users.each do |r| %>
             <tr>
                 <td><%= r.first_name %></td>
                 <td><%= r.last_name %></td>
                 <td><%= r.email %></td>
+                <td><%= link_to 'Add ', :controller => "users", :action => "add_friend", :id => r.id %></td>
             </tr>
         <% end %>
     </table>
@@ -21,13 +22,9 @@
     <br />
     <br />
 
-    Per page: <%= per_page_select %>
 
-    <% if @search.page_count > 1 %>
-        <br />Page: <%= page_select %>
-    <% end %>
 <% else %>
     No users were returned
 <% end %>
 
-<%= link_to 'New reply', new_reply_path %>
+<br /><%= link_to "My Profile", user_path(@user) %>

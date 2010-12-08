@@ -1,15 +1,19 @@
 class UsersController < ApplicationController
 
-  # POST /users/search
+  # GET /users/search
   def search
     @user = current_user
-    @search = User.new_search(params[:search])
-    @users, @users_count = @search.all, @search.count  
+    @search = User.search
+    @search.first_name_like(params[:first_name_keywords]).last_name_like(params[:last_name_keywords]).email_like(params[:email_keywords])
+    @users, @users_count = @search.all, @search.count
+    render :results  
   end
   
   # GET /users/add_friend
   def add_friend
-    
+    friend = User.find(params[:id])
+    current_user.add_friend(friend)
+    redirect_to user_url(current_user)
   end
   
   # GET /users
@@ -21,7 +25,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = current_user #User.find(params[:id])
+    @user = current_user
     
     respond_to do |format|
       format.html # show.html.erb
