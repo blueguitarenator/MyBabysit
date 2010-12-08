@@ -28,15 +28,50 @@
   </p>
 <% end %>
 
-<% unless @event.replies.empty? %>
-  <%= render :partial => "/replies/reply",
-	:collection => @event.replies %>
-<% end %>
+<h1>Reply Status</h1>
+<table>
+  <tr>
+    <th>Answer</th>
+    <th>Note</th>
+	<th>Name</th>
+  </tr>
 
-<% unless @user.friends.empty? %>
-  <%= render :partial => "/users/friend",
-	:collection => @user.friends %>
+<% if @user.accttype == 'parent' %>
+	<% @event.replies.each do |reply| %>
+	  <tr>
+	    <td><%=h reply.answer %></td>
+	    <td><%=h reply.note %></td>
+		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
+	  </tr>
+	<% end %>
+<% else %>
+	<% @user.replies.each do |reply| %>
+	<tr>
+	  <td><%=h reply.answer %></td>
+	  <td><%=h reply.note %></td>
+		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
+	  <td><%= link_to 'Show', reply %></td>
+	  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
+	  <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>	
 <% end %>
+</table>
+
+<h1> Add From My Babysitters </h1>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  <% @user.friends.each do |friend| %>
+    <tr>
+	  <td><%=h friend.first_name %></td>
+	  <td><%=h friend.last_name %></td>
+	  <td><%= link_to 'Add ', :controller => "events", :action => "add_reply", :id => friend.id, :evt_id => @event.id %></td>
+	</tr>
+  <% end %>
+</table>
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', user_url(current_user) %>

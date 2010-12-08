@@ -3,10 +3,14 @@
 <% form_for(@reply) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :answer %><br />
-    <%= f.text_field :answer %>
-  </p>
+<div class="answer">
+	<%= f.radio_button :answer, 'yes', :checked => true %> 
+	<%= f.label :answer_yes, 'YES' %>
+	<%= f.radio_button :answer, 'no' %>
+	<%= f.label :answer_no, 'NO' %>
+	<%= f.radio_button :answer, 'maybe' %>
+	<%= f.label :answer_maybe, 'Maybe' %>
+</div>
   <p>
     <%= f.label :note %><br />
     <%= f.text_field :note %>

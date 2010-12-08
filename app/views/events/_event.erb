@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+	<th>Status</th>
 	<th>Babysitter</th>
     <th>Name</th>
     <th>Eventdate</th>
@@ -12,6 +13,7 @@
 
 <% @user.events.each do |event| %>
   <tr>
+	<td><%=h event.status %>
 	<td><%=h event.sitter_name %>
     <td><%=h event.name %></td>
     <td><%=h event.eventDate %></td>

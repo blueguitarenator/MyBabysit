@@ -1,5 +1,17 @@
 class EventsController < ApplicationController
 
+  def add_reply
+    @event = Event.find(params[:evt_id])
+    r = Reply.create(
+      :event_id => @event.id,
+      :user_id => params[:id],
+      :answer => 'Pending',
+      :note => ''
+      )
+    @event.replies << r
+    redirect_to user_url(current_user)
+  end
+  
   # GET /events
   # GET /events.xml
   def index

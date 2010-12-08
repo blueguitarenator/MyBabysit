@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     self.friends
   end
   
+  def full_name
+    name = first_name + " " + last_name
+  end
+  
   private
   def create_reverse_association(associated_user)
     associated_user.known_friends << self unless associated_user.known_friends.include?(self)
