@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
                             :class_name => "User",
                             :join_table => "users_friends",
                             :foreign_key => "user_id",
-                            :association_foreign_key => "friend_id"
+                            :association_foreign_key => "friend_id",
+                            :after_add => :create_reverse_association,
+                            :after_remove => :remove_reverse_association
                      
   has_many  :replies
 
@@ -22,4 +24,17 @@ class User < ActiveRecord::Base
     sql = User.sanitize(["UPDATE users_friends SET friends_since = ?, accepted = ? WHERE member_id = ? AND friend_id = ?", Time.now(), 1, self.id, friend].flatten)
     self.connection.update(sql, "Accept Friend")
   end
+  
+  def known_friends
+    self.friends
+  end
+  
+  private
+  def create_reverse_association(associated_user)
+    associated_user.known_friends << self unless associated_user.known_friends.include?(self)
+  end
+  def remove_reverse_association(associated_user)
+    associated_user.known_friends.delete(self) if associated_user.known_friends.include?(self)
+  end
+  
 end
