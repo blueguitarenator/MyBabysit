@@ -1,0 +1,3 @@
+BabysitMailer#forgot
+
+Find me in app/views/babysit_mailer/forgot.erb

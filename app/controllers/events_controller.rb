@@ -5,10 +5,11 @@ class EventsController < ApplicationController
     r = Reply.create(
       :event_id => @event.id,
       :user_id => params[:id],
-      :answer => 'Pending',
+      :answer => '<NONE>',
       :note => ''
       )
     @event.replies << r
+    BabysitMailer.deliver_event(@event, r)
     redirect_to user_url(current_user)
   end
   

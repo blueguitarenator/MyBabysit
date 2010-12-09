@@ -1,0 +1,3 @@
+BabysitMailer#invite
+
+Find me in app/views/babysit_mailer/invite.erb

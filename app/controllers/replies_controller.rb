@@ -54,6 +54,8 @@ class RepliesController < ApplicationController
   def update
     @reply = current_user.replies.find(params[:id])
     if (@reply.update_attributes(params[:reply]))
+      event = Event.find(@reply.event.id)
+      BabysitMailer.deliver_reply(event, @reply)
       redirect_to user_url(current_user)
     else
       render :action => :edit

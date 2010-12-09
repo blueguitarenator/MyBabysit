@@ -1,0 +1,8 @@
+Dear <%= @event.user.first_name %>
+
+You have received a reply from <%= @reply.user.first_name %> <%= @reply.user.last_name %> for the event <%= @event.name %>.
+
+Answer is: <%= @reply.answer %>
+Reply note: <%= @reply.note %>
+
+Thanks
