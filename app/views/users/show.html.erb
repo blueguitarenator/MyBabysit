@@ -19,7 +19,7 @@
 <% if @user.accttype != 'babysitter' %>
 	<h1> My Events </h1>
 	<% @user.events.each do |event| %>
-		<%= event.name %> <%= event.eventDate %> <%= event.startTime %>
+		----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
 		<table>
 		  <tr>
 			<th>Status</th>
@@ -35,8 +35,7 @@
 		<% end %>
 		</table>
 	    <%= link_to 'Show', event %>
-	    <%= link_to 'Edit', edit_event_path(event) %>
-	    <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %><br /><br />
+	    <%= link_to 'Edit', edit_event_path(event) %><br /><br />
 	<% end %>
 <% end %>
 
@@ -61,7 +60,6 @@
 	      <td><%=h reply.event.note %></td>
 		  <td><%= link_to 'Show', reply %></td>
 		  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
-		  <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>
 		</tr>
 	<% end %>
 	</table>
