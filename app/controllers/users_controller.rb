@@ -1,8 +1,19 @@
 class UsersController < ApplicationController
   
+  # GET /users/send_invite
+  def send_invite
+    BabysitMailer.deliver_invite(current_user, params[:invite_email])
+    redirect_to user_url(current_user)
+  end
+  
+  # GET /users/invite
+  def invite
+    @user = current_user
+    render :invitation
+  end
+  
   # GET /users/search
   def search
-    BabysitMailer.deliver_invite(current_user)
     @user = current_user
     @search = User.search
     @search.first_name_like(params[:first_name_keywords]).last_name_like(params[:last_name_keywords]).email_like(params[:email_keywords])
@@ -20,8 +31,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    redirect_to login_url
-    
+    if (current_user)
+      redirect_to user_url(current_user)
+    else
+      redirect_to login_url
+    end
   end
 
   # GET /users/1

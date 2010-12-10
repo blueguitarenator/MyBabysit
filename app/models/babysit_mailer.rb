@@ -1,13 +1,13 @@
 class BabysitMailer < ActionMailer::Base
   
 
-  def invite(user)
+  def invite(from_user, to_email)
     subject    'MyBabysit Invitation'
-    recipients user.email
+    recipients to_email
     from       'no-reply@mybabysit.com'
     sent_on    Time.now
     
-    body       :user => user
+    body       :user => from_user
   end
 
   def event(event, reply)

@@ -12,7 +12,7 @@
 	  <tr>
 	    <td><%=h reply.answer %></td>
 	    <td><%=h reply.note %></td>
-		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
+		<td><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
 	  </tr>
 	<% end %>
 <% else %>
@@ -20,7 +20,7 @@
 	<tr>
 	  <td><%=h reply.answer %></td>
 	  <td><%=h reply.note %></td>
-		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
+		<td><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
 	  <td><%= link_to 'Show', reply %></td>
 	  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
 	  <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>

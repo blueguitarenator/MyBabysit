@@ -1,21 +1,30 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :invitations
+
   map.search '/events/add_reply', :controller => 'events', :action => 'add_reply'
+
   map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :get}
   map.add_friend '/users/add_friend', :controller => 'users', :action => 'add_friend'
+
   map.login "login", :controller => "sessions", :action => "new", :conditions => {:method => :get}
   map.login "login", :controller => "sessions", :action => "create", :conditions => {:method => :post}
-  
   map.logout "logout", :controller => "sessions", :action => "destroy"
+
   # You should use the below line instead of the above line.
   #map.logout "logout", :controller => "sessions", :action => "destroy", :conditions => {:method => :delete}
   map.resources :replies
 
   map.resources :events
+  # map.resources :events do |events|
+  #  events.resources :replies, :only => [:new, :create]
+  # end
 
   map.resources :users
 
   map.resources :users, :has_many => :events
   map.resources :users, :has_many => :replies
+  
+  map.resources :invitations
   
   # The priority is based upon order of creation: first created -> highest priority.
 

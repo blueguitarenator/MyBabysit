@@ -1,0 +1,15 @@
+<h1>New invitation</h1>
+<p> 	
+	Enter the email address of somebody you would like to invite to mybabysit.com and press send!
+</p>
+<br />
+<% form_for(@invitation) do |f| %>
+
+  <p>
+	  <%= f.label :invite_email %><br />
+	  <%= f.text_field :invite_email %><br />
+    <%= f.submit 'Send' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', invitations_path %>
