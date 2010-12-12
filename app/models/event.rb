@@ -1,6 +1,10 @@
 class Event < ActiveRecord::Base
   belongs_to :user
   has_many :replies
+  validates_presence_of :eventDate
+  validates_presence_of :startTime
+  validates_presence_of :endTime
+  
   @sitter_name
   
   def status

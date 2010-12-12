@@ -1,15 +1,18 @@
 <h1>New invitation</h1>
-<p> 	
-	Enter the email address of somebody you would like to invite to mybabysit.com and press send!
+<p>
+Enter the email address of somebody you would like to invite and send. When the user registers, an email will be sent to you to let you know so you can search for them from your homepage and add them to your network.
 </p>
-<br />
 <% form_for(@invitation) do |f| %>
+  <%= f.error_messages %>
 
   <p>
-	  <%= f.label :invite_email %><br />
-	  <%= f.text_field :invite_email %><br />
-    <%= f.submit 'Send' %>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', invitations_path %>
+<%= link_to 'Back', user_url(current_user) %>
+<%= link_to 'Pending', invitations_url %>

@@ -9,16 +9,13 @@ class User < ActiveRecord::Base
                             :after_add => :create_reverse_association,
                             :after_remove => :remove_reverse_association
                      
-  has_many  :replies
 
   validates_presence_of :email
   validates_uniqueness_of :email
  
   has_many :events
-  
-  def invite_email
-    @invite_email
-  end
+  has_many :replies
+  has_many :invitations
        
   def add_friend(friend)
     self.friends << friend unless self.friends.include?(friend) || friend == self

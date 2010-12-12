@@ -1,7 +1,3 @@
-
-class Invitation
-  
-  def invite_email
-    @invite_email
-  end
+class Invitation < ActiveRecord::Base
+  belongs_to :user
 end

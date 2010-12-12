@@ -1,17 +1,5 @@
 class UsersController < ApplicationController
   
-  # GET /users/send_invite
-  def send_invite
-    BabysitMailer.deliver_invite(current_user, params[:invite_email])
-    redirect_to user_url(current_user)
-  end
-  
-  # GET /users/invite
-  def invite
-    @user = current_user
-    render :invitation
-  end
-  
   # GET /users/search
   def search
     @user = current_user
@@ -42,6 +30,15 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = current_user
+    invitation = Invitation.find_by_email(@user.email)
+    if (invitation)
+      friend = User.find(invitation.user_id)
+      if (friend)
+        current_user.add_friend(friend)
+        invitation.destroy
+        flash[:notice] = "You and User #{friend.first_name} #{friend.last_name} have been linked due to invitation"
+      end
+    end
     
     respond_to do |format|
       format.html # show.html.erb

@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :invitations
+
 
   map.search '/events/add_reply', :controller => 'events', :action => 'add_reply'
 
@@ -20,11 +20,11 @@ ActionController::Routing::Routes.draw do |map|
   # end
 
   map.resources :users
+  map.resources :invitations, :except => [:update]
 
   map.resources :users, :has_many => :events
   map.resources :users, :has_many => :replies
-  
-  map.resources :invitations
+  map.resources :users, :has_many => :invitations
   
   # The priority is based upon order of creation: first created -> highest priority.
 
