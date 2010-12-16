@@ -1,3 +1,10 @@
-BabysitMailer#reply
+Dear <%= @event.user.first_name %>
 
-Find me in app/views/babysit_mailer/reply.erb
+You have received a reply from <%= @reply.user.first_name %> <%= @reply.user.last_name %> for the event <%= @event.name %>.
+
+Answer is: <%= @reply.answer %>
+Reply note: <%= @reply.note %>
+
+Thanks
+
+www.mybabysit.com

@@ -1,3 +1,11 @@
-BabysitMailer#event
+Dear <%= @reply.user.first_name %>
 
-Find me in app/views/babysit_mailer/event.erb
+<%= @event.user.first_name %> <%= @event.user.last_name %> has sent you a babysit job for <%= @event.eventDate %> starting at <%= @event.startTime %> until about <%= @event.endTime%>.
+
+Event note: <%= @event.note %>
+
+Login at www.mybabysit.com to make your reply!
+
+Thanks
+
+www.mybabysit.com

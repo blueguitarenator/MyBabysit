@@ -1,3 +1,5 @@
-BabysitMailer#invite
+<%= :user.first_name %> <%= :user.last_name %> is inviting you to check out www.mybabysit.com to schedule babysitter jobs easily using automatic email notifications.
 
-Find me in app/views/babysit_mailer/invite.erb
+Thanks
+
+www.mybabysit.com

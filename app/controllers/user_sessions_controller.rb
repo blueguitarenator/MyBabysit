@@ -1,15 +1,15 @@
-class SessionsController < ApplicationController
+class UserSessionsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
   
   def new
-    @session = Session.new
+    @user_session = UserSession.new
   end
   
   def create
     logger.info("Created a new session")
-    @session = Session.new(params[:session])
-    if @session.save
+    @user_session = UserSession.new(params[:user_session])
+    if @user_session.save
       flash[:notice] = "Login successful!"
       redirect_back_or_default user_url(current_user.id)
     else
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    current_session.destroy
+    current_user_session.destroy
     flash[:notice] = "Logout successful!"
     redirect_back_or_default login_url
   end
