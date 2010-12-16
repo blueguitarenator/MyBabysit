@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :logged_in?
   
   # GET /users/search
   def search
@@ -19,11 +20,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    if (current_user)
-      redirect_to user_url(current_user)
-    else
-      redirect_to login_url
-    end
+    redirect_to user_url(current_user)
   end
 
   # GET /users/1

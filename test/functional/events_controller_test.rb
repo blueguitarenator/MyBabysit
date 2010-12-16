@@ -1,10 +1,15 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
+  def setup
+    @controller  = EventsController.new
+    @request     = ActionController::TestRequest.new
+    @response    = ActionController::TestResponse.new
+  end
+
   test "should get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:events)
+    assert_raise("no_route_matches")
   end
 
   test "should get new" do

@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_session, :current_user
   filter_parameter_logging :password
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  
+
+  def logged_in?
+    unless current_user
+      redirect_to login_url
+    end
+  end
+    
   private
     def current_session
       @current_session ||= Session.find(1)

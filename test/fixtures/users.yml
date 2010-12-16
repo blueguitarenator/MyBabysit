@@ -4,13 +4,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
 amanda:
   id: 1
   last_name: Barker
   first_name: Amanda
   email: amanda@msn.com
   accttype: babysitter
-  crypted_password: asdf
 
 morgan:
   id: 2
@@ -18,15 +18,13 @@ morgan:
   first_name: Morgan
   email: morgan@msn.com
   accttype: babysitter
-  crypted_password: asdf
-  
+
 leslie:
   id: 3
   last_name: Steimel
   first_name: Leslie
   email: leslie@msn.com
   accttype: babysitter
-  crypted_password: asdf
 
 rich:
   id: 4
@@ -34,7 +32,6 @@ rich:
   first_name: Rich
   email: rich@msn.com
   accttype: parent
-  crypted_password: asdf
 
 kristy:
   id: 5
@@ -42,7 +39,6 @@ kristy:
   first_name: Kristy
   email: kristy@msn.com
   accttype: parent
-  crypted_password: asdf
 
 janet:
   id: 6
@@ -50,4 +46,3 @@ janet:
   first_name: Janet
   email: janet@msn.com
   accttype: parent
-  crypted_password: asdf

@@ -1,16 +1,15 @@
 class User < ActiveRecord::Base
   acts_as_authentic
-  validates_presence_of :first_name, :last_name, :email
+  
   has_and_belongs_to_many :friends,
-                            :class_name => "User",
-                            :join_table => "users_friends",
-                            :foreign_key => "user_id",
-                            :association_foreign_key => "friend_id",
-                            :after_add => :create_reverse_association,
-                            :after_remove => :remove_reverse_association
+                          :class_name => "User",
+                          :join_table => "users_friends",
+                          :foreign_key => "user_id",
+                          :association_foreign_key => "friend_id",
+                          :after_add => :create_reverse_association,
+                          :after_remove => :remove_reverse_association
                      
-
-  validates_presence_of :email
+  validates_presence_of :first_name, :last_name, :email
   validates_uniqueness_of :email
  
   has_many :events

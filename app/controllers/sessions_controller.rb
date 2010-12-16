@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     @session = Session.new(params[:session])
     if @session.save
       flash[:notice] = "Login successful!"
-#      route = current_user.kind_of?(Parent) ? parent_url(current_user.id) : babysitter_url(current_user.id)
       redirect_back_or_default user_url(current_user.id)
     else
       render :action => :new
