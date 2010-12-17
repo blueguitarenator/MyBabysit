@@ -18,6 +18,8 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should create event" do
+    rich = Factory(:rich)
+    @controller.stubs(:current_user).returns(rich)
     assert_difference('Event.count') do
       post :create, :event => { }
     end
@@ -26,23 +28,32 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should show event" do
-    get :show, :id => events(:one).to_param
+    get :show, :id => Factory(:dinner).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => events(:one).to_param
+    rich = Factory(:rich)
+    Event.stubs(:find).returns(Factory(:wedding))
+    @controller.stubs(:current_user).returns(rich)
+    get :edit, :id => Factory(:wedding).to_param
     assert_response :success
   end
 
   test "should update event" do
-    put :update, :id => events(:one).to_param, :event => { }
-    assert_redirected_to event_path(assigns(:event))
+    rich = Factory(:rich)
+    Event.stubs(:find).returns(Factory(:wedding))
+    @controller.stubs(:current_user).returns(rich)
+    put :update, :id => Factory(:dinner).to_param, :event => { }
+    assert_redirected_to user_path(assigns(rich)) #event_path(assigns(:event))
   end
 
   test "should destroy event" do
+    rich = Factory(:rich)
+    Event.stubs(:find).returns(Factory(:dinner))
+    @controller.stubs(:current_user).returns(rich)
     assert_difference('Event.count', -1) do
-      delete :destroy, :id => events(:one).to_param
+      delete :destroy, :id => Factory(:dinner).to_param
     end
 
     assert_redirected_to events_path

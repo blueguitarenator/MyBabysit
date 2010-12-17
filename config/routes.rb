@@ -12,9 +12,9 @@ ActionController::Routing::Routes.draw do |map|
 
   # You should use the below line instead of the above line.
   #map.logout "logout", :controller => "sessions", :action => "destroy", :conditions => {:method => :delete}
-  map.resources :replies, :except => [:index]
+  map.resources :replies, :except => [:index, :delete, :new, :create]
 
-  map.resources :events, :except => [:index]
+  map.resources :events, :except => [:index, :delete]
   # map.resources :events do |events|
   #  events.resources :replies, :only => [:new, :create]
   # end

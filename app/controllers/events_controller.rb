@@ -12,18 +12,6 @@ class EventsController < ApplicationController
     BabysitMailer.deliver_event(@event, r)
     redirect_to user_url(current_user)
   end
-  
-  # GET /events
-  # GET /events.xml
-  def index
-    # delete this
-    @events = Event.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-    end
-  end
 
   # GET /events/1
   # GET /events/1.xml
@@ -74,13 +62,5 @@ class EventsController < ApplicationController
     else
       render :action => :edit
     end
-  end
-
-  # DELETE /events/1
-  # DELETE /events/1.xml
-  def destroy
-    event = current_user.events.find(params[:id])
-    current_user.events.delete(event)
-    redirect_to user_url(current_user)
   end
 end

@@ -12,13 +12,43 @@ class UsersControllerTest < ActionController::TestCase
     @response    = ActionController::TestResponse.new
   end
   
-  test "index should redirect to login when no session" do
+  def test_user_show
+    rich = Factory(:rich)
+    puts "*********"
+    puts rich.friends.count
+    puts "*********"
+    amanda = Factory(:amanda)
+    invitation = Factory(:invitation)
+    invitation.user_id = rich.id
+    @controller.stubs(:current_user).returns(rich)
+    Invitation.stubs(:find_by_email).returns(invitation)
+    User.stubs(:find).returns(amanda)
+    amanda.expects(:first_name)
+    amanda.expects(:last_name)
+    rich.expects(:add_friend)
+    rich.friends << amanda
+    invitation.expects(:destroy)
+    get :show, :id => rich.id
+    puts "*********"
+    puts rich.friends.count
+    puts "*********"
+    assert_response :success
+  end
+  
+  def test_user_edit
+    rich = Factory(:rich)
+    @controller.stubs(:current_user).returns(rich)
+    get :edit, :id => rich.id
+    assert_response :success
+  end
+  
+  def test_index_no_session
     get :index
     assert_redirected_to(:controller => "sessions", :action => "create")
     assert_nil assigns(:users)
   end
 
-  test "index should redirect to home when session" do
+  def test_index_with_session
     evt = mock()
     evt.expects(:sitter_name).returns("foo")
     controller.stubs(:current_user).returns(Factory(:rich))

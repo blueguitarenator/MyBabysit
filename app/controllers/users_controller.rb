@@ -80,10 +80,6 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = current_user
-    
-    puts "***************"
-    puts current_user
-    puts "***************"
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

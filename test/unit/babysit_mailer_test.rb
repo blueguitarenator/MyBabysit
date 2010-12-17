@@ -5,7 +5,7 @@ class BabysitMailerTest < ActionMailer::TestCase
     @rich = Factory(:rich)
     @amanda = Factory(:amanda)
     @dinner = Factory(:dinner)
-    @re = Factory(:reply)
+    @re = Factory(:yes_reply)
     @dinner.user_id = @rich.id
     @re.event_id = @dinner.id
     @re.user_id = @amanda.id

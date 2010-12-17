@@ -54,8 +54,16 @@ Factory.define :wedding, :class => Event do |e|
   e.note "thanks"
 end
 
-Factory.define :reply do |r|
+Factory.define :yes_reply, :class => Reply do |r|
   r.answer "Yes"
   r.note "Thanks"
 end
 
+Factory.define :no_reply, :class => Reply do |r|
+  r.answer "No"
+  r.note "Sorry"
+end
+
+Factory.define :invitation, :class => Invitation do |i|
+  i.email "amanda@msn.com"
+end
