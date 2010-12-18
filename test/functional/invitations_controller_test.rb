@@ -1,10 +1,13 @@
 require 'test_helper'
 
 class InvitationsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:invitations)
+  def setup
+    @controller  = InvitationsController.new
+    @request     = ActionController::TestRequest.new
+    @response    = ActionController::TestResponse.new
+
+    @rich = Factory(:rich)
+    @controller.stubs(:current_user).returns(@rich)
   end
 
   test "should get new" do
@@ -21,25 +24,22 @@ class InvitationsControllerTest < ActionController::TestCase
   end
 
   test "should show invitation" do
-    get :show, :id => invitations(:one).to_param
+    get :show, :id => Factory(:invitation).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => invitations(:one).to_param
+    get :edit, :id => Factory(:invitation).to_param
     assert_response :success
   end
 
-  test "should update invitation" do
-    put :update, :id => invitations(:one).to_param, :invitation => { }
-    assert_redirected_to invitation_path(assigns(:invitation))
-  end
-
   test "should destroy invitation" do
+    inv = Factory(:invitation)
+    inv.user_id = @rich.id
     assert_difference('Invitation.count', -1) do
-      delete :destroy, :id => invitations(:one).to_param
+      delete :destroy, :id => inv.to_param
     end
 
-    assert_redirected_to invitations_path
+    assert_redirected_to user_path(@rich)
   end
 end

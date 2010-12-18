@@ -78,7 +78,7 @@ class InvitationsController < ApplicationController
     @invitation.destroy
 
     respond_to do |format|
-      format.html { redirect_to(invitations_url) }
+      format.html { redirect_to(user_url(current_user)) }
       format.xml  { head :ok }
     end
   end

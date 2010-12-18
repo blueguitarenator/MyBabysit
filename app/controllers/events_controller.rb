@@ -56,6 +56,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
+    @user = current_user
     @event = current_user.events.find(params[:id])
     if (@event.update_attributes(params[:event]))
       redirect_to user_url(current_user)

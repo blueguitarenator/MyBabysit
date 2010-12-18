@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render :xml => current_user }
     end
   end
 
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
+      format.html { redirect_to(logout_url) }
       format.xml  { head :ok }
     end
   end
