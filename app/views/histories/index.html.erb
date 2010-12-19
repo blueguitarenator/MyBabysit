@@ -1,0 +1,49 @@
+<% if current_user.accttype != 'babysitter' %>
+
+	<h1> My Event History </h1>
+	<% current_user.events.historic(Time.now).each do |event| %>
+		----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
+		<table>
+		  <tr>
+			<th>Status</th>
+			<th>Babysitter</th>
+		    <th>Sitter Note</th>
+		  </tr>
+		<% event.replies.each do |reply| %>
+		  <tr>
+			<td><%=h reply.answer %>
+			<td><%=h reply.user.full_name %>
+		    <td><%=h reply.note %></td>
+		  </tr>
+		<% end %>
+		</table>
+	    <%= link_to 'Show', event %>
+		<br />
+	<% end %>
+<% end %>
+<br />
+<% if current_user.accttype != 'parent' %>
+	<h1>My Jobs</h1>
+	<table>
+	  <tr>
+	    <th>Answer</th>
+	    <th>Parent's name</th>
+		<th>Date</th>
+	    <th>Start</th>
+	    <th>End</th>
+		<th>Parent's Note</th>
+	  </tr>
+	<% current_user.replies.historic(Time.now).each do |reply| %>
+		<tr>
+		  <td><%=h reply.answer %></td>
+		  <td><%=h reply.event.user.full_name %>
+	      <td><%=h reply.event.eventDate %></td>
+	      <td><%=h reply.event.startTime %></td>
+	      <td><%=h reply.event.endTime %></td>
+	      <td><%=h reply.event.note %></td>
+		  <td><%= link_to 'Show', reply %></td>
+		  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>

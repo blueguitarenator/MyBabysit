@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :except => [:index]
   map.resources :invitations, :except => [:update]
+  map.resources :histories, :only => [:index]
 
   map.resources :users, :has_many => :events
   map.resources :users, :has_many => :replies

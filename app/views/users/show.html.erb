@@ -19,8 +19,8 @@
 </p>
 
 <% if @user.accttype != 'babysitter' %>
-	<h1> My Events </h1>
-	<% @user.events.each do |event| %>
+	<h1> My Upcoming Events </h1>
+	<% @user.events.upcoming(Time.now).each do |event| %>
 		----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
 		<table>
 		  <tr>
@@ -42,7 +42,7 @@
 <% end %>
 
 <% if @user.accttype != 'parent' %>
-	<h1>My Jobs</h1>
+	<h1>My Upcoming Jobs</h1>
 	<table>
 	  <tr>
 	    <th>Answer</th>
@@ -52,7 +52,7 @@
 	    <th>End</th>
 		<th>Parent's Note</th>
 	  </tr>
-	<% @user.replies.each do |reply| %>
+	<% @user.replies.upcoming(Time.now).each do |reply| %>
 		<tr>
 		  <td><%=h reply.answer %></td>
 		  <td><%=h reply.event.user.full_name %>

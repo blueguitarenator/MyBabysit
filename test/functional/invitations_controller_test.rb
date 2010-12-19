@@ -7,19 +7,31 @@ class InvitationsControllerTest < ActionController::TestCase
     @response    = ActionController::TestResponse.new
 
     @rich = Factory(:rich)
+    inv = Factory(:invitation)
+    @rich.invitations << inv
     @controller.stubs(:current_user).returns(@rich)
   end
 
+  test "should show users pending invitations" do
+    get :index
+    assert_response :success
+    invitations = assigns(:invitations)
+    assert_equal 1, invitations.count
+  end
+  
   test "should get new" do
     get :new
     assert_response :success
   end
 
   test "should create invitation" do
+    BabysitMailer.expects(:deliver_invite)
     assert_difference('Invitation.count') do
-      post :create, :invitation => { }
+      post :create, :invitation => { :email => 'one@two.com' }
     end
-
+    inv = assigns(:invitation)
+    assert_equal("one@two.com", inv.email)
+    assert_equal(@rich.id, inv.user_id)
     assert_redirected_to invitation_path(assigns(:invitation))
   end
 

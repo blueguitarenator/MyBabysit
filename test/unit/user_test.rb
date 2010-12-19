@@ -37,14 +37,7 @@ class UserTest < ActiveSupport::TestCase
         :email => 'mary@msn.com',
         :accttype => 'babysitter',
         :password => 'asdf',
-        :password_confirmation => 'asdf',
-        :crypted_password => 'asdf',
-        :password_salt => 'asdf',
-        :persistence_token => 'asdf',
-        :single_access_token => 'asdf',
-        :perishable_token => 'asdf',
-        :login_count => 0,
-        :failed_login_count => 0)
+        :password_confirmation => 'asdf')
     end
   end
 

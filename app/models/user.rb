@@ -15,7 +15,15 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :replies
   has_many :invitations
-       
+  
+  def event_histories
+    self.events
+  end
+  
+  def reply_histories
+    self.replies
+  end
+  
   def add_friend(friend)
     self.friends << friend unless self.friends.include?(friend) || friend == self
   end

@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  named_scope :historic, lambda {|date| {:conditions => ["eventDate < ?", date]}}  
+  named_scope :upcoming, lambda {|date| {:conditions => ["eventDate >= ?", date]}}
+  
   belongs_to :user
   has_many :replies
   validates_presence_of :eventDate
@@ -6,10 +9,6 @@ class Event < ActiveRecord::Base
   validates_presence_of :endTime
   
   @sitter_name
-  
-  def status
-    
-  end
   
   def sitter_name
     replies.each do |r|
