@@ -1,6 +1,11 @@
 class Event < ActiveRecord::Base
-  named_scope :historic, lambda {|date| {:conditions => ["eventDate < ?", date]}}  
-  named_scope :upcoming, lambda {|date| {:conditions => ["eventDate >= ?", date]}}
+  named_scope :historic, lambda {|date| {
+    :order => 'eventDate DESC', 
+    :conditions => ["eventDate < ?", date]}}
+      
+  named_scope :upcoming, lambda {|date| {
+    :order => 'eventDate ASC', 
+    :conditions => ["eventDate >= ?", date]}}
   
   belongs_to :user
   has_many :replies
