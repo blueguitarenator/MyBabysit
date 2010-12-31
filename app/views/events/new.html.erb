@@ -9,8 +9,10 @@
   </p>
   <p>
     <%= f.label :eventDate %><br />
-    <%= f.date_select :eventDate %>
+    <input name="date1" id="date1" class="date-pick" />
+    <div class="dp-choose-date" />
   </p>
+
   <p>
     <%= f.label :startTime %><br />
     <%= f.text_field :startTime %>
@@ -27,5 +29,6 @@
     <%= f.submit 'Create' %>
   </p>
 <% end %>
+
 
 <%= link_to 'Back', user_url(current_user) %>
