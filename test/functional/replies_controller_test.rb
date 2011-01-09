@@ -2,10 +2,6 @@ require 'test_helper'
 
 class RepliesControllerTest < ActionController::TestCase
   def setup
-    @controller  = RepliesController.new
-    @request     = ActionController::TestRequest.new
-    @response    = ActionController::TestResponse.new
-
     @rich = Factory(:rich)
     @amanda = Factory(:amanda)
     @dinner = Factory(:dinner)
@@ -25,7 +21,7 @@ class RepliesControllerTest < ActionController::TestCase
   end
   
   test "should show reply" do
-    get :show, :id => @yes.to_param
+    get :show, :event_id => @dinner.to_param, :id => @yes.to_param
     assert_response :success
     reply = assigns(:reply)
     user = assigns(:user)
@@ -34,13 +30,21 @@ class RepliesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, :id => @no.to_param
+    get :edit, :event_id => @dinner.to_param, :id => @no.to_param
     assert_response :success
   end
 
   test "should update reply" do
     BabysitMailer.expects(:deliver_reply)
-    put :update, :id => @yes.to_param, :reply => { :answer => 'no' }
+    put :update, :event_id => @dinner.to_param, :id => @yes.to_param, :reply => { :answer => 'no' }
     assert_redirected_to user_path(@amanda)
   end
+  
+  
+  test "cannot add duplicate reply to event" do
+    assert_equal(2, @dinner.replies.count)
+    post :create, :event_id => @dinner.to_param, :id => @amanda.to_param
+    assert_equal(2, @dinner.replies.count)
+  end
+  
 end

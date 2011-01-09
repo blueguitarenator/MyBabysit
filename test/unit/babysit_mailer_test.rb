@@ -18,8 +18,8 @@ class BabysitMailerTest < ActionMailer::TestCase
 
     sent = ActionMailer::Base.deliveries.first
     assert_equal [@amanda.email], sent.to
-    assert_equal "MyBabysit Invitation", sent.subject
-    assert sent.body =~ /is inviting you to check out www.mybabysit.com to schedule babysitter jobs easily using automatic email notifications./
+    assert_equal "Sitter Invitation", sent.subject
+    assert sent.body =~ /is inviting you to check out www.sittercalling.com to schedule sitter jobs easily using automatic email notifications./
     assert sent.body =~ /#{@rich.first_name}/ 
     assert sent.body =~ /#{@rich.last_name}/
   end
@@ -30,7 +30,7 @@ class BabysitMailerTest < ActionMailer::TestCase
 
     sent = ActionMailer::Base.deliveries.first
     assert_equal [@amanda.email], sent.to
-    assert_equal "MyBabysit Event for #{@rich.last_name}", sent.subject
+    assert_equal "Sitter Event for #{@rich.last_name}", sent.subject
     assert sent.body =~ /^Dear #{@re.user.first_name}/
     assert sent.body =~ /#{@rich.first_name}/ 
     assert sent.body =~ /#{@rich.last_name}/
@@ -38,7 +38,7 @@ class BabysitMailerTest < ActionMailer::TestCase
     assert sent.body =~ /#{@dinner.eventDate}/ 
     assert sent.body =~ /#{@dinner.startTime}/
     assert sent.body =~ /#{@dinner.endTime}/ 
-    assert sent.body =~ /Login at www.mybabysit.com to make your reply!/
+    assert sent.body =~ /Login at www.sittercalling.com to make your reply!/
   end
 
   def test_reply_mail
@@ -47,7 +47,7 @@ class BabysitMailerTest < ActionMailer::TestCase
 
     sent = ActionMailer::Base.deliveries.first
     assert_equal [@rich.email], sent.to
-    assert_equal "MyBabysit Reply from #{@amanda.last_name}", sent.subject
+    assert_equal "Sitter Reply from #{@amanda.last_name}", sent.subject
     assert sent.body =~ /^Dear #{@dinner.user.first_name}/
     assert sent.body =~ /You have received a reply from/ 
     assert sent.body =~ /#{@amanda.first_name}/

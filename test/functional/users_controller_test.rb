@@ -7,27 +7,6 @@ class UsersControllerTest < ActionController::TestCase
   setup :activate_authlogic
   
   def setup
-    @controller  = UsersController.new
-    @request     = ActionController::TestRequest.new
-    @response    = ActionController::TestResponse.new
-
-#    @rich = Factory(:rich)
-#    @amanda = Factory(:amanda)
-#    @dinner = Factory(:dinner)
-#    @yes = Factory(:yes_reply)
-#    @no = Factory(:no_reply)#
-
-#    @rich.events << @dinner
-#    @dinner.user_id = @rich.id
-
-#    @yes.event_id = @dinner.id
-#    @no.event_id = @dinner.id
-#    @yes.user_id = @amanda.id
-#    @no.user_id = @amanda.id
-
-#    @amanda.replies << @yes
-#    @amanda.replies << @no
-#    @controller.stubs(:current_user).returns(@rich)
     
     @rich = Factory(:rich)
     @amanda = Factory(:amanda)

@@ -11,7 +11,7 @@ if($) {
 
 $(function()
 {
-	Date.format = 'mm-dd-yyyy';
+	Date.format = 'yyyy-mm-dd';
 	Date.firstDayOfWeek = 0;
 	$('#event_eventDate').datePicker();
 });

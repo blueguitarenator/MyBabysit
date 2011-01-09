@@ -69,7 +69,7 @@
     <tr>
 	  <td><%=h friend.first_name %></td>
 	  <td><%=h friend.last_name %></td>
-	  <td><%= link_to 'Add ', :controller => "events", :action => "add_reply", :id => friend.id, :evt_id => @event.id %></td>
+	  <td><%= link_to 'Add', event_replies_path(@event, :id => friend.id), :method => :post %> </td>
 	</tr>
   <% end %>
 </table>

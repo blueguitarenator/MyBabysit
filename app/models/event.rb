@@ -23,4 +23,8 @@ class Event < ActiveRecord::Base
     end
     @sitter_name
   end
+  
+  def event_date_formatted
+     eventDate.strftime '%Y-%m-%d'
+  end
 end

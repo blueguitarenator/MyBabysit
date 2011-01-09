@@ -63,8 +63,8 @@
 	      <td><%=h reply.event.startTime %></td>
 	      <td><%=h reply.event.endTime %></td>
 	      <td><%=h reply.event.note %></td>
-		  <td><%= link_to 'Show', reply %></td>
-		  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
+		  <td><%= link_to 'Show', event_reply_path(reply.event, reply) %></td>
+		  <td><%= link_to 'Edit', edit_event_reply_path(reply.event, reply) %></td>
 		</tr>
 	<% end %>
 	</table>
