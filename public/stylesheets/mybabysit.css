@@ -1,20 +1,156 @@
-
+/* css reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
 body {
-	font: 16px sans-serif;
+	line-height: 1;
 }
-p {
-	color: blue;
-	padding: 5px;
-	margin: 5px;
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+:focus {
+	outline: 0;
+}
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-#test {
-	width: 1000px;
-	height: 10px;
-	background: #ffb;
-	padding: 10px;
-	border: 2px solid #999;
+/* start: specific styles */
+body {background-color:#DDDDDD;}
+.container {
+  height:100%;
+  margin:0 auto;
+  width:100%;
 }
+.top {
+  background:url('../images/bg_top_repeat.png') repeat-x;
+  height:93px;
+  padding-top:15px;
+  width:100%;
+}
+.top .limiter {
+  background:url('../images/bg_top_norepeat.png') no-repeat;
+  height:108px;
+}
+.middle {
+  background:url('../images/bg_middle_repeat.png') repeat-x;
+  height:360px;
+  width:100%;
+}
+.middle .limiter {background:url('../images/bg_middle_norepeat.png') no-repeat;}
+.bottom {
+  height:auto;
+  text-align:center;
+  width:100%;
+}
+a, p, label {
+  font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size:10px;
+  text-decoration:none;
+}
+label {color:#FFFFFF;}
+.limiter {
+  height:auto;
+  margin:0 auto;
+  padding:0 10px;
+  width:730px;
+}
+.footerNavigation {margin:10px 0;}
+.footerNavigation ul li {
+  display:inline;
+  padding:0 15px;
+}
+.footerNavigation a {color:#555555;}
+.footerNavigation a:hover {color:red;}
+.footerInformation p {color:#AAAAAA;}
+.floatR {float:right;}
+.floatL {float:left;}
+
+#home .box {
+  float:left;
+  height:360px;
+  margin-left:20px;
+  width:230px;
+}
+#home .box.first {margin-left:0;}
+#home .box p {
+  color:#444444;
+  font-family:Palatino Linotype,Book Antiqua,Palatino,serif;
+  font-size:12px;
+  line-height:18px;
+}
+.scButton {
+  background:url('../images/button_universal.png') repeat-x;
+  background-position:0 0;
+  border:1px solid #355158;
+  color:#FFFFFF;
+  cursor:pointer;
+  display:inline-block;
+  padding:1px 2px;
+}
+.scButton:active {background:url('../images/button_universal_active.png') repeat-x;}
+.scButton input {
+  background:none;
+  border:0;
+  color:#FFFFFF;
+  cursor:pointer;
+  display:inline-block;
+  padding:1px 2px;
+}
+.login table tr td {padding:0 4px 3px;}
+
+input.inputUsername,
+input.inputPassword {width:135px;}
+
+.box h3 {
+  background:url('../images/home_headers_sprite.png') no-repeat;
+  height:25px;
+  margin:3px;
+  width:200px;
+}
+.box h3#createAccount {background-position:0 0;}
+.box h3#buildNetwork {background-position:0 -25px;}
+.box h3#fillEvenings {background-position:0 -50px;}
+a#registerNow {
+  background:url('../images/button_register_sprite.png') repeat-x;
+  display:block;
+  height:32px;
+  margin:6px;
+  width:165px;}
+a#registerNow:hover {background-position:0 -32px;}
+a#registerNow:active {background-position:0 -64px;}
+
+/* Old stuff - before John stuff */
 
 /* located in demo.css and creates a little calendar icon
  * instead of a text link for "Choose date"

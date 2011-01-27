@@ -1,0 +1,16 @@
+<div class="top">
+  <div class="limiter">
+    <div class="floatL">
+      <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
+    </div>
+    <div class="floatR">
+		<% if current_user %>
+			<%= link_to "Home", user_url(current_user) %>
+			<%= link_to "Edit Profile", edit_user_path(current_user) %>
+			<%= link_to "History", :controller => 'histories' %>
+			<%= link_to "Logout", logout_path %>
+		<% end %>
+	
+    </div>
+  </div>
+</div>

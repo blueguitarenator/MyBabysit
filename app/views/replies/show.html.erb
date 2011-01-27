@@ -1,3 +1,8 @@
+<%= render("shared/header_plain")%>
+<div class="middle">
+  <div class="limiter">
+
+
 <p>
   <b>Answer:</b>
   <%=h @reply.answer %>
@@ -12,3 +17,8 @@
 	<%= link_to 'Edit', edit_event_reply_path(@reply.event, @reply) %>
 <% end %>
 <%= link_to 'Back', user_url(current_user) %>
+
+  </div>
+</div>
+
+<%= render("shared/bottom")%>

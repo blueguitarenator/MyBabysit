@@ -33,7 +33,6 @@ class RepliesController < ApplicationController
   # GET /events/1/reply
   # GET /events/1/reply.xml
   def create
-    puts "***************"
     event = Event.find(params[:event_id])
     friend = User.find(params[:id])
     not_found = true

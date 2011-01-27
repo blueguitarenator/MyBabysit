@@ -1,3 +1,7 @@
+<%= render("shared/header_plain")%>
+<div class="middle">
+  <div class="limiter">
+
 <h1>Editing event</h1>
 
 <% form_for(@event) do |f| %>
@@ -76,3 +80,9 @@
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', user_url(current_user) %>
+
+
+  </div>
+</div>
+
+<%= render("shared/bottom")%>

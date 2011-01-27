@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Users: <%= controller.action_name %></title>
+  <title>Sitter Calling - Home</title>
   <%= stylesheet_link_tag 'scaffold', 'mybabysit' %>
   <%= stylesheet_link_tag 'scaffold', 'datepicker' %>
   <%= javascript_include_tag 'jquery-1.4.4.min.js' %>
@@ -14,7 +14,9 @@
 </head>
 <body>
 	<p style="color: green"><%= notice %></p>
-
+	<div id="home">
+	  <div class="container">
+<!-- 
 	<div id="user_nav">
 		<% if current_user %>
 			<%= link_to "Home", user_url(current_user) %>
@@ -22,12 +24,16 @@
 			<%= link_to "History", :controller => 'histories' %>
 			<%= link_to "Logout", logout_path %>
 		<% else %>
+		
 			<%= link_to "Register", new_user_path %>
 			<%= link_to "Login", login_path %>
+	
 		<% end %>
 	</div>
-	
+-->
 	<%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

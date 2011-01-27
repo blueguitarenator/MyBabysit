@@ -1,3 +1,7 @@
+<%= render("shared/header_plain")%>
+<div class="middle">
+  <div class="limiter">
+
 <h1> Search Results</h1>
 
 <% if @users_count > 0 %>
@@ -28,3 +32,8 @@
 <% end %>
 
 <br /><%= link_to "My Profile", user_path(@user) %>
+
+  </div>
+</div>
+
+<%= render("shared/bottom")%>

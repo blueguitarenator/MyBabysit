@@ -1,3 +1,7 @@
+<%= render("shared/header_plain")%>
+<div class="middle">
+  <div class="limiter">
+
 <p>
   <b>Name:</b>
   <%=h @event.name %>
@@ -56,8 +60,11 @@
 </table>
 
 
-
-
-
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', user_url(current_user) %>
+
+
+  </div>
+</div>
+
+<%= render("shared/bottom")%>

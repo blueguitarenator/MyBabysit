@@ -1,3 +1,8 @@
+<%= render("shared/header_plain")%>
+<div class="middle">
+  <div class="limiter">
+
+
 <h1>Editing reply</h1>
 
 <% form_for @reply, :url => event_reply_path do |f| %>
@@ -22,3 +27,8 @@
 
 <%= link_to 'Show', event_reply_path(@reply.event, @reply) %> |
 <%= link_to 'Back', user_url(current_user) %>
+
+  </div>
+</div>
+
+<%= render("shared/bottom")%>

@@ -1,6 +1,6 @@
 class BabysitMailer < ActionMailer::Base
-  
-
+  #http://www.practicalecommerce.com/blogs/post/442-Sending-Text-Messages-With-Ruby-on-Rails
+  #http://lukeredpath.co.uk/blog/sending-sms-messages-from-your-rails-application.html
   def invite(from_user, to_email)
     subject    'Sitter Invitation'
     recipients to_email

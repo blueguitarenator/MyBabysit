@@ -1,3 +1,7 @@
+<%= render("shared/header_plain")%>
+<div class="middle">
+  <div class="limiter">
+
 <h1>Edit My Account</h1>
 
 <% form_for @user, :url => user_path do |f| %>
@@ -9,3 +13,7 @@
 <br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
 <br /><%= link_to "My Profile", user_path(@user) %>
 
+  </div>
+</div>
+
+<%= render("shared/bottom")%>
