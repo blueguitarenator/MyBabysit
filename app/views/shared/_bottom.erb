@@ -2,10 +2,14 @@
   <% limiter do %>
     <% footerNavigation do %>
       <ul>
-        <li><a href="#">login</a></li>
-		<li><%= link_to "register new account", new_user_path %></li>
-        <li><a href="#">learn about us</a></li>
-        <li><a href="#">contact us</a></li>
+		<% if !current_user %>
+        	<li><%= link_to "login", login_path %></li>
+		<% else %>
+			<li><%= link_to "logout", logout_path %></li>
+		<% end %>
+        <li><%= link_to "register new account", new_user_path %></li>
+        <li><%= link_to "learn about us", about_us_path %></li>
+        <li><%= link_to "contact us", contact_us_path %></li>
       </ul>
     <% end %>
     <% footerInformation do %>

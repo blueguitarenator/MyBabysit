@@ -1,11 +1,10 @@
-<%= render("shared/header_plain")%>
 <% middle do %>
   <% limiter do %>
 
 	<h1> Search Results</h1>
 
-	<% if @users_count > 0 %>
-	    <%= @users_count %> users found
+	<% if @users.count > 0 %>
+	    <%= @users.count %> users found
 
 	    <table border="1" cellpadding="5">
 	        <tr>
@@ -35,5 +34,3 @@
 
   <% end %>
 <% end %>
-
-<%= render("shared/bottom")%>

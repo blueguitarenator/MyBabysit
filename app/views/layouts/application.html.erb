@@ -16,6 +16,8 @@
 	<p style="color: green"><%= notice %></p>
 	<div id="home">
 	  <div class="container">
+		<%= render("shared/header_plain")%>
+		
 <!-- 
 	<div id="user_nav">
 		<% if current_user %>
@@ -32,6 +34,7 @@
 	</div>
 -->
 	<%= yield %>
+	<%= render("shared/bottom")%>
   </div>
 </div>
 

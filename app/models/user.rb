@@ -11,10 +11,18 @@ class User < ActiveRecord::Base
                      
   validates_presence_of :first_name, :last_name, :email
   validates_uniqueness_of :email
- 
   has_many :events
   has_many :replies
   has_many :invitations
+  
+  def self.like(params)
+      if params.include?('@')
+        conditions = {:email => params}
+      else
+        conditions = ['last_name like ?', params]
+      end  
+    User.all(:conditions => conditions)
+  end
   
   def event_histories
     self.events

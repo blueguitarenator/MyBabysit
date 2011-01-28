@@ -14,20 +14,18 @@ ActionController::Routing::Routes.draw do |map|
   #map.logout "logout", :controller => "sessions", :action => "destroy", :conditions => {:method => :delete}
   
   #map.resources :replies, :except => [:index, :delete, :new, :create]
-
   map.resources :events, :except => [:index, :delete]
   
   map.resources :events do |events|
     events.resources :replies, :only => [:create, :update, :show, :edit]
   end
     
-  map.resources :users, :except => [:index]
+
   map.resources :invitations, :except => [:update]
   map.resources :histories, :only => [:index]
+  map.resources :about_us, :only => [:index]
+  map.resources :contact_us, :only => [:index]
 
-  map.resources :users, :has_many => :events
-  map.resources :users, :has_many => :replies
-  map.resources :users, :has_many => :invitations
   
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -47,6 +45,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+  map.resources :users, :except => [:index], :has_many => [:events, :replies, :invitations]
   
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
