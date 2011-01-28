@@ -16,7 +16,11 @@
 	<p style="color: green"><%= notice %></p>
 	<div id="home">
 	  <div class="container">
-		<%= render("shared/header_plain")%>
+		<% if (current_user) %>
+			<%= render("shared/header_plain")%>
+		<% else %>
+			<%= render("shared/header")%>
+		<% end %>
 		
 <!-- 
 	<div id="user_nav">

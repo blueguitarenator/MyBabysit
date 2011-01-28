@@ -62,18 +62,11 @@
 	<% box do %>
 		<br />
 		<br />
-		<% form_tag search_path, :method => :get do %>
+		<% form_tag users_url, :method => :get do %>
 		    <fieldset>
 		        <legend>Search </legend>
-		        <%= label_tag :first_name_keywords %><br />
-		        <%= text_field_tag :first_name_keywords %><br />
-		        <br />
-		        <%= label_tag :last_name_keywords %><br />
-		        <%= text_field_tag :last_name_keywords %><br />
-		        <br />
-		        <%= label_tag :email_keywords %><br />
-		        <%= text_field_tag :email_keywords %><br />
-		        <br />
+		        <%= label_tag :search_keywords %><br />
+		        <%= text_field_tag :search_keywords %><br />
 		    </fieldset>
 		    <%= submit_tag "Search", :class => "scButton" %>
 		<% end %>

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :logged_in?, :except => [:new, :create]
-  
+
+  # NOT USED
   # GET /users/search
   def search
     @user = current_user
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
     #@search.first_name_like(params[:first_name_keywords]).last_name_like(params[:last_name_keywords]).email_like(params[:email_keywords])
     #@search.first_name_like(params[:first_name_keywords]).last_name_like(params[:first_name_keywords]).email_like(params[:first_name_keywords])
     #@users, @users_count = @search.all, @search.count
-    @users = User.like(params[:first_name_keywords])
+    @users = User.like(params[:search_keywords])
     render :results  
   end
   
@@ -22,7 +23,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    redirect_to user_url(current_user)
+    @user = current_user
+    @users = User.like(params[:search_keywords])
+    render :results  
   end
 
   # GET /users/1

@@ -67,6 +67,7 @@ body {background-color:#DDDDDD;}
   height:360px;
   width:100%;
 }
+/* John, this one was missing so I copied middle_repeat and named it norepeat */
 .middle .limiter {background:url('../images/bg_middle_norepeat.png') no-repeat;}
 .bottom {
   height:auto;

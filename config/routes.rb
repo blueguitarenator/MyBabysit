@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.search '/events/add_reply', :controller => 'events', :action => 'add_reply'
 
-  map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :get}
+#  map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :get}
   map.add_friend '/users/add_friend', :controller => 'users', :action => 'add_friend'
 
   map.login "login", :controller => "user_sessions", :action => "new", :conditions => {:method => :get}
@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  map.resources :users, :except => [:index], :has_many => [:events, :replies, :invitations]
+  map.resources :users, :has_many => [:events, :replies, :invitations]
   
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
