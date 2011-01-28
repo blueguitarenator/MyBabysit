@@ -1,114 +1,109 @@
 <%= render("shared/header_plain")%>
-<div class="middle">
-  <div class="limiter">
+<% middle do %>
+  <% limiter do %>
 
-<%= link_to 'Invite', new_invitation_path %>
+	<%= link_to 'Invite', new_invitation_path %>
 
-<div id="test">You have a new event pending</div>
+	<div id="test">You have a new event pending</div>
 
-<h1> My Homepage - <%=h @user.first_name %> <%=h @user.last_name%> </h1>
+	<h1> My Homepage - <%=h @user.first_name %> <%=h @user.last_name%> </h1>
 
-<p>
-  <b>Lastname:</b>
-  <%=h @user.last_name %>
-</p>
-<p>
-  <b>Firstname:</b>
-  <%=h @user.first_name %>
-</p>
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
-<p>
-  <b>Acct:</b>
-  <%=h @user.accttype %>
-</p>
+	<% box_first do %>
+		<br />
+		<br />
 
-<% if @user.accttype != 'babysitter' %>
-	<h1> My Upcoming Events </h1>
-	<% @upcoming_events.each do |event| %>
-		----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
+		<% if @user.accttype != 'babysitter' %>
+			<% @upcoming_events.each do |event| %>
+				----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
+				<table>
+				  <tr>
+					<th>Status</th>
+					<th>Babysitter</th>
+				    <th>Sitter Note</th>
+				  </tr>
+				<% event.replies.each do |reply| %>
+				  <tr>
+					<td><%=h reply.answer %>
+					<td><%=h reply.user.full_name %>
+				    <td><%=h reply.note %></td>
+				  </tr>
+				<% end %>
+				</table>
+			    <%= link_to 'Show', event %>
+			    <%= link_to 'Edit', edit_event_path(event) %><br /><br />
+			<% end %>
+		<% end %>
+
+		<% if @user.accttype != 'parent' %>
+			<table>
+			  <tr>
+			    <th>Answer</th>
+			    <th>Parent's name</th>
+				<th>Date</th>
+			    <th>Start</th>
+			    <th>End</th>
+				<th>Parent's Note</th>
+			  </tr>
+			<% @upcoming_replies.each do |reply| %>
+				<tr>
+				  <td><%=h reply.answer %></td>
+				  <td><%=h reply.event.user.full_name %>
+			      <td><%=h reply.event.eventDate %></td>
+			      <td><%=h reply.event.startTime %></td>
+			      <td><%=h reply.event.endTime %></td>
+			      <td><%=h reply.event.note %></td>
+				</tr>
+			  <%= link_to 'Show', event_reply_path(reply.event, reply) %>
+			  <%= link_to 'Edit', edit_event_reply_path(reply.event, reply) %>
+			<% end %>
+			</table>
+		<% end %>
+
+	<% end %>
+	<% box do %>
+		<br />
+		<br />
+		<% form_tag search_path, :method => :get do %>
+		    <fieldset>
+		        <legend>Search </legend>
+		        <%= label_tag :first_name_keywords %><br />
+		        <%= text_field_tag :first_name_keywords %><br />
+		        <br />
+		        <%= label_tag :last_name_keywords %><br />
+		        <%= text_field_tag :last_name_keywords %><br />
+		        <br />
+		        <%= label_tag :email_keywords %><br />
+		        <%= text_field_tag :email_keywords %><br />
+		        <br />
+		    </fieldset>
+		    <%= submit_tag "Search", :class => "scButton" %>
+		<% end %>
+	<% end %>
+	<% box do %>
+		<br />
+		<br />
+
+		<h1> Network </h1>
 		<table>
 		  <tr>
-			<th>Status</th>
-			<th>Babysitter</th>
-		    <th>Sitter Note</th>
+		    <th>First Name</th>
+		    <th>Last Name</th>
 		  </tr>
-		<% event.replies.each do |reply| %>
+		<% @user.friends.each do |friend| %>
 		  <tr>
-			<td><%=h reply.answer %>
-			<td><%=h reply.user.full_name %>
-		    <td><%=h reply.note %></td>
+		    <td><%=h friend.first_name %></td>
+		    <td><%=h friend.last_name %></td>
 		  </tr>
 		<% end %>
 		</table>
-	    <%= link_to 'Show', event %>
-	    <%= link_to 'Edit', edit_event_path(event) %><br /><br />
+
 	<% end %>
-<% end %>
 
-<% if @user.accttype != 'parent' %>
-	<h1>My Upcoming Jobs</h1>
-	<table>
-	  <tr>
-	    <th>Answer</th>
-	    <th>Parent's name</th>
-		<th>Date</th>
-	    <th>Start</th>
-	    <th>End</th>
-		<th>Parent's Note</th>
-	  </tr>
-	<% @upcoming_replies.each do |reply| %>
-		<tr>
-		  <td><%=h reply.answer %></td>
-		  <td><%=h reply.event.user.full_name %>
-	      <td><%=h reply.event.eventDate %></td>
-	      <td><%=h reply.event.startTime %></td>
-	      <td><%=h reply.event.endTime %></td>
-	      <td><%=h reply.event.note %></td>
-		  <td><%= link_to 'Show', event_reply_path(reply.event, reply) %></td>
-		  <td><%= link_to 'Edit', edit_event_reply_path(reply.event, reply) %></td>
-		</tr>
+	<% if @user.accttype != "babysitter" %>
+		<%= link_to 'New Event', new_event_path %>
 	<% end %>
-	</table>
+	
+  <% end %>
 <% end %>
-<br />
-<br />
-<% form_tag search_path, :method => :get do %>
-    <fieldset>
-        <legend>Search My Babysitter Users - Choose one or many</legend>
-        <%= label_tag :first_name_keywords %><br />
-        <%= text_field_tag :first_name_keywords %><br />
-        <br />
-        <%= label_tag :last_name_keywords %><br />
-        <%= text_field_tag :last_name_keywords %><br />
-        <br />
-        <%= label_tag :email_keywords %><br />
-        <%= text_field_tag :email_keywords %><br />
-        <br />
-    </fieldset>
-    <%= submit_tag "Search" %>
-<% end %>
-
-<h1> My Babysitter Network </h1>
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-  </tr>
-<% @user.friends.each do |friend| %>
-  <tr>
-    <td><%=h friend.first_name %></td>
-    <td><%=h friend.last_name %></td>
-  </tr>
-<% end %>
-</table>
-
-<% if @user.accttype != "babysitter" %>
-	<br /><%= link_to 'New Event', new_event_path %>
-<% end %>
-  </div>
-</div>
 
 <%= render("shared/bottom")%>

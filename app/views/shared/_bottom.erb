@@ -1,17 +1,17 @@
-<div class="bottom">
-  <div class="limiter">
-    <div class="footerNavigation">
+<% bottom do %>
+  <% limiter do %>
+    <% footerNavigation do %>
       <ul>
         <li><a href="#">login</a></li>
 		<li><%= link_to "register new account", new_user_path %></li>
         <li><a href="#">learn about us</a></li>
         <li><a href="#">contact us</a></li>
       </ul>
-    </div>
-    <div class="footerInformation">
+    <% end %>
+    <% footerInformation do %>
       <p>
         Copyright &copy; 2011 Sitter Calling. All rights reserved.
       </p>
-    </div>
-  </div>
-</div>
+    <% end %>
+  <% end %>
+<% end %>

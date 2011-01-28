@@ -1,19 +1,19 @@
 <%= render("shared/header_plain")%>
-<div class="middle">
-  <div class="limiter">
+<% middle do %>
+  <% limiter do %>
 
-<h1>Edit My Account</h1>
+	<h1>Edit My Account</h1>
 
-<% form_for @user, :url => user_path do |f| %>
-  <%= f.error_messages %>
-  <%= render :partial => "form", :object => f %>
-  <%= f.submit "Update" %>
+	<% form_for @user, :url => user_path do |f| %>
+	  <%= f.error_messages %>
+	  <%= render :partial => "form", :object => f %>
+	  <%= f.submit "Update" %>
+	<% end %>
+
+	<br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
+	<br /><%= link_to "My Profile", user_path(@user) %>
+
+  <% end %>
 <% end %>
-
-<br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
-<br /><%= link_to "My Profile", user_path(@user) %>
-
-  </div>
-</div>
 
 <%= render("shared/bottom")%>

@@ -1,28 +1,28 @@
 <%= render("shared/header_plain")%>
-<div class="middle">
-  <div class="limiter">
+<% middle do %>
+  <% limiter do %>
 
-<h1>New invitation</h1>
-<p>
-Enter the email address of somebody you would like to invite and send. When the user registers, an email will be sent to you to let you know so you can search for them from your homepage and add them to your network.
-</p>
-<% form_for(@invitation) do |f| %>
-  <%= f.error_messages %>
+	<h1>New invitation</h1>
+	<p>
+	Enter the email address of somebody you would like to invite and send. When the user registers, an email will be sent to you to let you know so you can search for them from your homepage and add them to your network.
+	</p>
+	<% form_for(@invitation) do |f| %>
+	  <%= f.error_messages %>
 
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+	  <p>
+	    <%= f.label :email %><br />
+	    <%= f.text_field :email %>
+	  </p>
+	  <p>
+	    <%= f.submit 'Create' %>
+	  </p>
+	<% end %>
+
+	<%= link_to 'Back', user_url(current_user) %>
+	<%= link_to 'Pending', invitations_url %>
+
+
+  <% end %>
 <% end %>
-
-<%= link_to 'Back', user_url(current_user) %>
-<%= link_to 'Pending', invitations_url %>
-
-
-  </div>
-</div>
 
 <%= render("shared/bottom")%>

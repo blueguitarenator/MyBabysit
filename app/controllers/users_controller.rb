@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = current_user
     @search = User.search
     @search.first_name_like(params[:first_name_keywords]).last_name_like(params[:last_name_keywords]).email_like(params[:email_keywords])
+    #@search.first_name_like(params[:first_name_keywords]).last_name_like(params[:first_name_keywords]).email_like(params[:first_name_keywords])
     @users, @users_count = @search.all, @search.count
     render :results  
   end

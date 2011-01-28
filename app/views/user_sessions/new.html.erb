@@ -1,23 +1,23 @@
 
 	<%= render("shared/header")%>
-    <div class="middle">
-      <div class="limiter">
-        <div class="box first">
-          <img alt="sign up" src="images/home_signup.png" />
+	<% middle do %>
+      <% limiter do %>
+        <% box_first do %>
+		  <%= image_tag("home_signup.png", :alt => "sign up")%>
           <h3 id="createAccount"></h3>
           <p>Sign up is easy and takes just a moment. Just enter your name and contact information and you're on your way!</p>
 		  <a id="registerNow" href="/users/new"></a>
-        </div>
-        <div class="box">
-          <img alt="sign up" src="images/home_build.png" />
+        <% end %>
+        <% box do %>
+		  <%= image_tag("home_build.png", :alt => "sign up")%>
           <h3 id="buildNetwork"></h3>
           <p>Once you sign up, you can build your personal network of sitters. Creating your network will allow you to send your events out to others. One more sentence for possible balance of elements.</p>
-        </div>
-        <div class="box">
-          <img alt="sign up" src="images/home_planning.png" />
+        <% end %>
+        <% box do %>
+		  <%= image_tag("home_planning.png", :alt => "sign up")%>
           <h3 id="fillEvenings"></h3>
           <p>After you build your sitter network, you can start adding events to your dashboard. From here, you can send requests for sitters to cover any events that you may need. One more sentence.</p>
-        </div>
-      </div>
-    </div>
+        <% end %>
+      <% end %>
+    <% end %>
 	<%= render("shared/bottom")%>

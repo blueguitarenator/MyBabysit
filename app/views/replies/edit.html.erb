@@ -1,34 +1,34 @@
 <%= render("shared/header_plain")%>
-<div class="middle">
-  <div class="limiter">
+<% middle do %>
+  <% limiter do %>
 
 
-<h1>Editing reply</h1>
+	<h1>Editing reply</h1>
 
-<% form_for @reply, :url => event_reply_path do |f| %>
-  <%= f.error_messages %>
+	<% form_for @reply, :url => event_reply_path do |f| %>
+	  <%= f.error_messages %>
 
-<div class="answer">
-	<%= f.radio_button :answer, 'yes', :checked => true %> 
-	<%= f.label :answer_yes, 'YES' %>
-	<%= f.radio_button :answer, 'no' %>
-	<%= f.label :answer_no, 'NO' %>
-	<%= f.radio_button :answer, 'maybe' %>
-	<%= f.label :answer_maybe, 'Maybe' %>
-</div>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+	<div class="answer">
+		<%= f.radio_button :answer, 'yes', :checked => true %> 
+		<%= f.label :answer_yes, 'YES' %>
+		<%= f.radio_button :answer, 'no' %>
+		<%= f.label :answer_no, 'NO' %>
+		<%= f.radio_button :answer, 'maybe' %>
+		<%= f.label :answer_maybe, 'Maybe' %>
+	</div>
+	  <p>
+	    <%= f.label :note %><br />
+	    <%= f.text_field :note %>
+	  </p>
+	  <p>
+	    <%= f.submit 'Update' %>
+	  </p>
+	<% end %>
+
+	<%= link_to 'Show', event_reply_path(@reply.event, @reply) %> |
+	<%= link_to 'Back', user_url(current_user) %>
+
+  <% end %>
 <% end %>
-
-<%= link_to 'Show', event_reply_path(@reply.event, @reply) %> |
-<%= link_to 'Back', user_url(current_user) %>
-
-  </div>
-</div>
 
 <%= render("shared/bottom")%>

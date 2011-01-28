@@ -1,9 +1,9 @@
-<div class="top">
-  <div class="limiter">
-    <div class="floatL">
+<% top do %>
+  <% limiter do%>
+    <% floatL do %>
       <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
-    </div>
-    <div class="floatR">
+    <% end %>
+    <% floatR do %>
       <% form_for @user_session, :url => login_path, :class => 'login' do |f| %>
         <table>
           <tbody>
@@ -25,6 +25,6 @@
           </tbody>
         </table>
       <% end %>
-    </div>
-  </div>
-</div>
+    <% end %>
+  <% end %>
+<% end %>
