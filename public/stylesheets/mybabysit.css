@@ -79,7 +79,10 @@ a, p, label {
   font-size:10px;
   text-decoration:none;
 }
+
+.middle label {color:#AAAAAA;}
 label {color:#FFFFFF;}
+
 .limiter {
   height:auto;
   margin:0 auto;

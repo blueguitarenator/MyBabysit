@@ -120,4 +120,12 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal(1, replies.count)
   end
   
+  test "should_search" do
+    @controller.stubs(:current_user).returns(@rich)
+    get :index, :search_keywords => 'barker'
+    assert_response :success
+    users = assigns(:users)
+    assert_equal(1, users.count)
+    assert_equal('Amanda', users[0].first_name)
+  end
 end

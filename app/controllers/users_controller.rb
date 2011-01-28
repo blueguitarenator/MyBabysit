@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @users = User.like(params[:search_keywords])
+    puts @users
     render :results  
   end
 
