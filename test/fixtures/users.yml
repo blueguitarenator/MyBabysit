@@ -10,39 +10,39 @@ amanda:
   last_name: Barker
   first_name: Amanda
   email: amanda@msn.com
-  accttype: babysitter
+  acct_type: babysitter
 
 morgan:
   id: 2
   last_name: Taylor
   first_name: Morgan
   email: morgan@msn.com
-  accttype: babysitter
+  acct_type: babysitter
 
 leslie:
   id: 3
   last_name: Steimel
   first_name: Leslie
   email: leslie@msn.com
-  accttype: babysitter
+  acct_type: babysitter
 
 rich:
   id: 4
   last_name: Johnson
   first_name: Rich
   email: rich@msn.com
-  accttype: parent
+  acct_type: parent
 
 kristy:
   id: 5
   last_name: Reidelberger
   first_name: Kristy
   email: kristy@msn.com
-  accttype: parent
+  acct_type: parent
 
 janet:
   id: 6
   last_name: Reed
   first_name: Janet
   email: janet@msn.com
-  accttype: parent
+  acct_type: parent

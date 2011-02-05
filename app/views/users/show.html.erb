@@ -11,7 +11,7 @@
 		<br />
 		<br />
 
-		<% if @user.accttype != 'babysitter' %>
+		<% if @user.acct_type != 'babysitter' %>
 			<% @upcoming_events.each do |event| %>
 				----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
 				<table>
@@ -33,7 +33,7 @@
 			<% end %>
 		<% end %>
 
-		<% if @user.accttype != 'parent' %>
+		<% if @user.acct_type != 'parent' %>
 		<% @upcoming_replies.each do |reply| %>
 			<table>
 			  <tr>
@@ -91,7 +91,7 @@
 
 	<% end %>
 
-	<% if @user.accttype != "babysitter" %>
+	<% if @user.acct_type != "babysitter" %>
 		<%= link_to 'New Event', new_event_path %>
 	<% end %>
 	

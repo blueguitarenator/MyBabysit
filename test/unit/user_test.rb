@@ -11,7 +11,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal("Amanda", amanda.first_name)
     assert_equal("Barker", amanda.last_name)
     assert_equal("amanda@msn.com", amanda.email)
-    assert_equal("babysitter", amanda.accttype)
+    assert_equal("babysitter", amanda.acct_type)
   end
   
   def test_should_load_babysitter_attributes
@@ -19,7 +19,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal("Rich", rich.first_name)
     assert_equal("Johnson", rich.last_name)
     assert_equal("rich@msn.com", rich.email)
-    assert_equal("parent", rich.accttype)
+    assert_equal("parent", rich.acct_type)
   end
   
   def test_should_delete_one_babysitter
@@ -35,7 +35,7 @@ class UserTest < ActiveSupport::TestCase
         :last_name => 'Smith', 
         :first_name => 'Mary', 
         :email => 'mary@msn.com',
-        :accttype => 'babysitter',
+        :acct_type => 'babysitter',
         :password => 'asdf',
         :password_confirmation => 'asdf')
     end

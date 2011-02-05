@@ -15,13 +15,13 @@
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
 
-<div class="accttype">
-	<%= form.radio_button :accttype, 'parent', :checked => true %> 
-	<%= form.label :accttype_parent, 'Parent' %>
-	<%= form.radio_button :accttype, 'babysitter' %>
-	<%= form.label :accttype_babysitter, 'Babysitter' %>
-	<%= form.radio_button :accttype, 'both' %>
-	<%= form.label :accttype_both, 'Parent & Babysitter' %>
+<div class="acct_type">
+	<%= form.radio_button :acct_type, 'parent', :checked => true %>
+	<%= form.label :acct_type_parent, 'Parent' %>
+	<%= form.radio_button :acct_type, 'babysitter' %>
+	<%= form.label :acct_type_babysitter, 'Babysitter' %>
+	<%= form.radio_button :acct_type, 'both' %>
+	<%= form.label :acct_type_both, 'Parent & Babysitter' %>
 </div>
 
 

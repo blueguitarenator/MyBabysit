@@ -1,7 +1,7 @@
 <% middle do %>
   <% limiter do %>
 
-	<% if current_user.accttype != 'babysitter' %>
+	<% if current_user.acct_type != 'babysitter' %>
 
 		<h1> My Event History </h1>
 		<% current_user.events.historic(Time.now).each do |event| %>
@@ -27,7 +27,7 @@
 		<% end %>
 	<% end %>
 	<br />
-	<% if current_user.accttype != 'parent' %>
+	<% if current_user.acct_type != 'parent' %>
 		<h1>My Jobs</h1>
 		<table>
 		  <tr>

@@ -8,11 +8,11 @@ Factory.define :user, :class => User do |f|
 end
 
 Factory.define :babysitter, :parent => :user do |f|
-  f.accttype "babysitter"
+  f.acct_type "babysitter"
 end
 
 Factory.define :adult, :parent => :user do |f|
-  f.accttype "parent"
+  f.acct_type "parent"
 end
 
 Factory.define :amanda, :parent => :babysitter do |f|

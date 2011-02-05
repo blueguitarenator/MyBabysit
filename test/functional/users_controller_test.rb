@@ -73,7 +73,7 @@ class UsersControllerTest < ActionController::TestCase
                             :email => 'ron@msn.com', 
                             :password => 'asdf', 
                             :password_confirmation => 'asdf', 
-                            :accttype => 'parent' }
+                            :acct_type => 'parent' }
     end
     assert_response 302
   end
