@@ -34,6 +34,7 @@
 		<% end %>
 
 		<% if @user.accttype != 'parent' %>
+		<% @upcoming_replies.each do |reply| %>
 			<table>
 			  <tr>
 			    <th>Answer</th>
@@ -43,7 +44,6 @@
 			    <th>End</th>
 				<th>Parent's Note</th>
 			  </tr>
-			<% @upcoming_replies.each do |reply| %>
 				<tr>
 				  <td><%=h reply.answer %></td>
 				  <td><%=h reply.event.user.full_name %>
@@ -52,10 +52,10 @@
 			      <td><%=h reply.event.endTime %></td>
 			      <td><%=h reply.event.note %></td>
 				</tr>
+			</table>
 			  <%= link_to 'Show', event_reply_path(reply.event, reply) %>
 			  <%= link_to 'Edit', edit_event_reply_path(reply.event, reply) %>
 			<% end %>
-			</table>
 		<% end %>
 
 	<% end %>

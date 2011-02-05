@@ -80,7 +80,9 @@ a, p, label {
   text-decoration:none;
 }
 
+/* John, I made this */
 .middle label {color:#AAAAAA;}
+
 label {color:#FFFFFF;}
 
 .limiter {

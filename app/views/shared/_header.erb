@@ -4,7 +4,7 @@
       <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
     <% end %>
     <% floatR do %>
-      <% form_for @user_session, :url => login_path, :class => 'login' do |f| %>
+      <% form_for (@user_session or UserSession.new), :url => login_path do |f| %>
         <table>
           <tbody>
             <tr>
