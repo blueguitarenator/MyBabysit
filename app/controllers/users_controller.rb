@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   before_filter :logged_in?, :except => [:new, :create]
-  
-  # GET /users/add_friend
-  def add_friend
-    friend = User.find(params[:id])
-    current_user.add_friend(friend)
-    redirect_to user_url(current_user)
-  end
-  
+
   # GET /users
   # GET /users.xml
   def index

@@ -44,7 +44,7 @@ class AddFriendControllerTest < ActionController::TestCase
     @controller.stubs(:current_user).returns(@rich)
     jane = Factory(:babysitter)
     assert_equal(0, @rich.friends.count)
-    put :update, :id => @rich.id, :friend_id => jane.to_param
+    put :update, :id => jane.to_param
     assert_equal(1, @rich.friends.count)
     assert_response 302
   end
