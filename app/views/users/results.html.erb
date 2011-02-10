@@ -17,7 +17,7 @@
 	                <td><%= r.first_name %></td>
 	                <td><%= r.last_name %></td>
 	                <td><%= r.email %></td>
-	                <td><%= link_to 'Add ', :controller => "users", :action => "add_friend", :id => r.id %></td>
+	                <td><%= link_to 'Add ', add_friend_path(r), :method => :put %></td>
 	            </tr>
 	        <% end %>
 	    </table>

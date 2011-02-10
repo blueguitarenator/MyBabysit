@@ -2,5 +2,6 @@ config/database.yml
 log/*
 script/*
 tmp/*
+workspace.xml
 
 

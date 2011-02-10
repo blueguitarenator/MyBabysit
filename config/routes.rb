@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/events/add_reply', :controller => 'events', :action => 'add_reply'
 
 #  map.search '/users/search', :controller => 'users', :action => 'search', :conditions => {:method => :get}
-  map.add_friend '/users/add_friend', :controller => 'users', :action => 'add_friend'
+#  map.add_friend '/users/add_friend', :controller => 'users', :action => 'add_friend'
 
   map.login "login", :controller => "user_sessions", :action => "new", :conditions => {:method => :get}
   map.login "login", :controller => "user_sessions", :action => "create", :conditions => {:method => :post}
@@ -25,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :histories, :only => [:index]
   map.resources :about_us, :only => [:index]
   map.resources :contact_us, :only => [:index]
+  map.resources :add_friend, :only => [:update]
 
   
   # The priority is based upon order of creation: first created -> highest priority.
