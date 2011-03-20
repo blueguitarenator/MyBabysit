@@ -2,7 +2,6 @@
       <div class="limiter">
         <div class="box first double">
           <h3 id="upcomingEvents"><span class="alt">Your Upcoming Events</span></h3>
-		  <% if @user.acct_type != 'babysitter' %>
 		    <% @upcoming_events.each do |event| %>
 
 	          <div class="eventItem">
@@ -27,8 +26,6 @@
 	            </div>
 	          </div>
 			<% end %>
-		  <% end %>
-		<% if @user.acct_type != 'parent' %>
 		  <% @upcoming_replies.each do |reply| %>
           <div class="eventItem">
             <a class="eventIndicator" href="#" title="Event Covered"></a>
@@ -42,15 +39,12 @@
             </div>
           </div>
 		  <% end %>
-		<% end %>
         <div class="eventItem newEvent">
         <a class="eventIndicator" href="#" title="Add New Event"></a>
           <div class="eventDetails">
             <ul>
-				<% if @user.acct_type != "babysitter" %>
-					<%= link_to 'Add New Event', new_event_path, :class => 'add' %>
-				<% end %>
-	            </ul>
+			  <%= link_to 'Add New Event', new_event_path, :class => 'add' %>
+	        </ul>
           </div>
         </div>
 
@@ -62,7 +56,7 @@
 			  <li><a href="#" title="View <%=h friend.first_name %> <%=h friend.last_name %> 's Profile"><%=h friend.first_name %> <%=h friend.last_name %></a></li>
 			<% end %>
             <li></li>
-            <li><%= link_to '+ Add New Sitter', new_search_friend_path, :class => 'add' %></li>
+            <li><%= link_to '+ Add To Network', new_search_friend_path, :class => 'add' %></li>
             <li><%= link_to '+ Invite', new_invitation_path, :class => 'add' %></li>
 
           </ul>

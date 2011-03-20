@@ -2,7 +2,6 @@
       <div class="limiter">
         
           <h3 id="historicEvents"><span class="alt">Event History</span></h3>
-		  <% if @user.acct_type != 'babysitter' %>
             <% current_user.events.historic(Time.now).each do |event| %>
 
 	          <div class="eventItem">
@@ -17,14 +16,12 @@
 					<% elsif event.pending %>
 					  <li>Pending: <%= event.sitter_name('<NONE>') %></li>
 					<% else %>
-					  <li>Uncovered: <%= link_to 'Invite New Sitter', edit_event_path(event) %></li>
+					  <li>Uncovered: </li>
 					<% end %>
 	              </ul>
 	            </div>
 	          </div>
 			<% end %>
-		  <% end %>
-		<% if @user.acct_type != 'parent' %>
 		  <% current_user.replies.historic(Time.now).each do |reply| %>
           <div class="eventItem">
             <a class="eventIndicator" href="#" title="Event Covered"></a>
@@ -38,8 +35,7 @@
             </div>
           </div>
 		  <% end %>
-		<% end %>
-        
+
         <div class="clear"></div>
       </div>
       <div class="gradient"></div>

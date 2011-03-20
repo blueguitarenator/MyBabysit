@@ -13,12 +13,8 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = current_user
-    if @user.acct_type != 'babysitter'
-      @upcoming_events = @user.events.upcoming(Time.now)
-    end
-    if @user.acct_type != 'parent'
-      @upcoming_replies = @user.replies.upcoming(Time.now)
-    end
+    @upcoming_events = @user.events.upcoming(Time.now)
+    @upcoming_replies = @user.replies.upcoming(Time.now)
     invitation = Invitation.find_by_email(@user.email)
     if (invitation)
       friend = User.find(invitation.user_id)
