@@ -1,72 +1,77 @@
 <div class="middle">
   <div class="limiter">
 
-<h2>Editing event</h2>
-
-<% form_for(@event) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :eventDate %><br />
-    <%= f.text_field :eventDate %>
-    <div class="dp-choose-date" />
-  </p>
-  <p>
-    <%= f.label :startTime %><br />
-    <%= f.text_field :startTime %>
-  </p>
-  <p>
-    <%= f.label :endTime %><br />
-    <%= f.text_field :endTime %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<h2>Reply Status</h2>
-<table>
-  <tr>
-    <th>Answer</th>
-    <th>Note</th>
-	<th>Name</th>
-  </tr>
-
-	<% @event.replies.each do |reply| %>
-	  <tr>
-	    <td><%=h reply.answer %></td>
-	    <td><%=h reply.note %></td>
-		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
-	  </tr>
-	<% end %>
-</table>
-
-<h2> Add From My Babysitters </h2>
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-  </tr>
-  <% @user.friends.each do |friend| %>
-    <tr>
-	  <td><%=h friend.first_name %></td>
-	  <td><%=h friend.last_name %></td>
-	  <td><%= link_to 'Add', event_replies_path(@event, :id => friend.id), :method => :post %> </td>
-	</tr>
-  <% end %>
-</table>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', user_url(current_user) %>
+    <div class="box first double">
+      <h2>Editing event</h2>
+      <% form_for(@event) do |f| %>
+        <%= f.error_messages %>
+        <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+        </p>
+        <p>
+        <%= f.label :eventDate %><br />
+        <%= f.text_field :eventDate %>
+        <div class="dp-choose-date" />
+        </p>
+        <p>
+        <%= f.label :startTime %><br />
+        <%= f.text_field :startTime %>
+        </p>
+        <p>
+        <%= f.label :endTime %><br />
+        <%= f.text_field :endTime %>
+        </p>
+        <p>
+        <%= f.label :note %><br />
+        <%= f.text_field :note %>
+        </p>
+        <p>
+        <%= f.submit 'Update' %>
+        </p>
+      <% end %>
 
 
+      <div class="eventItem newEvent">
+        <div class="eventDetails">
+          <h2>Reply Status For This Event</h2>
+          <table cellpadding="125" cellspacing="125" width="100%">
+            <tr>
+            <th style="text-align:left">Answer</th>
+            <th style="text-align:left">Name</th>
+            <th style="text-align:left">Note</th>
+            </tr>
+
+            <% @event.replies.each do |reply| %>
+              <tr>
+              <td width="20%"><%=h reply.answer %></td>
+              <td width="30%"><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
+              <td width="50%"><%=h reply.note %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="box network">
+      <h3 id="yourNetwork"><span class="alt">Add From My Babysitters</span></h3>
+      <ul>
+        <% @user.friends.each do |friend| %>
+          <li><%=h friend.first_name %> <%=h friend.last_name %> <%= link_to 'Add To Event', event_replies_path(@event, :id => friend.id), :method => :post %></li>
+        <% end %>
+        <li></li>
+        <li></li>
+
+      </ul>
+    </div>
+
+
+
+    <%= link_to 'Show', @event %> |
+    <%= link_to 'Back', user_url(current_user) %>
+
+    <div class="clear"></div>
   </div>
+  <div class="gradient"></div>
 </div>

@@ -1,67 +1,80 @@
-    <div class="middle">
-      <div class="limiter">
-        <div class="box first double">
-          <h3 id="upcomingEvents"><span class="alt">Your Upcoming Events</span></h3>
-		    <% @upcoming_events.each do |event| %>
+<div class="middle">
+  <div class="limiter">
+    <div class="box first double">
+      <h3 id="upcomingEvents"><span class="alt">Your Upcoming Events</span></h3>
+      <% @upcoming_events.each do |event| %>
 
-	          <div class="eventItem">
-				<% if event.covered %>
-	              <a class="eventIndicator" href="#" title="Event Covered"></a>
-				<% else %>
-				  <a class="eventIndicator uncovered" href="#" title="Event Uncovered - Invite New Sitter"></a>
-				<% end %>
-	            <div class="eventDetails">
-	              <ul>
-					<li><%= link_to event.name, event, :class => 'eventTitle' %></li>
-	                <li><%= event.eventDate %></li>
-	                <li>Covered from  <%= event.startTime %> to  <%= event.endTime %></li>
-					<% if event.covered %>
-	                  <li>Babysitter: <%= event.sitter_name('Yes') %></li>
-					<% elsif event.pending %>
-					  <li>Pending: <%= event.sitter_name('<NONE>') %></li>
-					<% else %>
-					  <li>Uncovered: <%= link_to 'Invite New Sitter', edit_event_path(event) %></li>
-					<% end %>
-	              </ul>
-	            </div>
-	          </div>
-			<% end %>
-		  <% @upcoming_replies.each do |reply| %>
-          <div class="eventItem">
-            <a class="eventIndicator" href="#" title="Event Covered"></a>
-            <div class="eventDetails">
-              <ul>
-				<li><%= link_to reply.event.eventDate, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
-				<li>Family: <%=h reply.event.user.full_name %>
-                <li>Coverage needed:  <%= reply.event.startTime %> to  <%= reply.event.endTime %></li>
-				<li>My reply: <%=h reply.answer %></li>
-              </ul>
-            </div>
-          </div>
-		  <% end %>
-        <div class="eventItem newEvent">
-        <a class="eventIndicator" href="#" title="Add New Event"></a>
+        <div class="eventItem">
+          <% if event.covered %>
+            <%= link_to '', event, :class => 'eventIndicator', :title => 'Event Covered' %>
+          <% else %>
+            <%= link_to '', edit_event_path(event), :class => 'eventIndicator uncovered', :title => 'Event Uncovered - Invite New Sitter' %>
+          <% end %>
           <div class="eventDetails">
             <ul>
-			  <%= link_to 'Add New Event', new_event_path, :class => 'add' %>
-	        </ul>
+              <li><%= link_to event.name, event, :class => 'eventTitle' %></li>
+              <li><%= event.eventDate %></li>
+              <li>Covered from  <%= event.startTime %> to  <%= event.endTime %></li>
+              <% if event.covered %>
+                <li>Babysitter: <%= event.sitter_name('Yes') %></li>
+              <% elsif event.pending %>
+                <li>Pending: <%= event.sitter_name('<NONE>') %></li>
+              <% else %>
+                <li>Uncovered: <%= link_to 'Invite New Sitter', edit_event_path(event) %></li>
+              <% end %>
+            </ul>
           </div>
         </div>
+      <% end %>
+      
+      <% @upcoming_replies.each do |reply| %>
+        <div class="eventItem">
+          <% if reply.answer == '<NONE>' %>
+            <%= link_to '', edit_event_reply_path(reply.event, reply), :class => 'eventIndicator uncovered', :title => 'Event Un-answered - Edit Reply' %>
+          <% else %>
+            <%= link_to '', event_reply_path(reply.event, reply), :class => 'eventIndicator', :title => 'Event Answered' %>
+          <% end %>
+          <div class="eventDetails">
+            <ul>
+            <% if reply.answer == '<NONE>' %>
+              <li><%= link_to reply.event.eventDate, edit_event_reply_path(reply.event, reply), :class => 'eventTitle', :title => 'Event Un-answered - Edit Reply' %>
+            <% else %>
+              <li><%= link_to reply.event.eventDate, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
+            <% end %>
 
+
+            <li>Family: <%=h reply.event.user.full_name %>
+            <li>Coverage needed:  <%= reply.event.startTime %> to  <%= reply.event.endTime %></li>
+            <li>My reply: <%=h reply.answer %></li>
+            </ul>
+          </div>
         </div>
-        <div class="box network">
-          <h3 id="yourNetwork"><span class="alt">Your Network</span></h3>
-          <ul>
-			<% @user.friends.each do |friend| %>
-			  <li><a href="#" title="View <%=h friend.first_name %> <%=h friend.last_name %> 's Profile"><%=h friend.first_name %> <%=h friend.last_name %></a></li>
-			<% end %>
-            <li></li>
-            <li><%= link_to '+ Add To Network', new_search_friend_path, :class => 'add' %></li>
-            <li><%= link_to '+ Invite', new_invitation_path, :class => 'add' %></li>
+      <% end %>
 
+      <div class="eventItem newEvent">
+        <a class="eventIndicator" href="#" title="Add New Event"></a>
+        <div class="eventDetails">
+          <ul>
+            <%= link_to 'Add New Event', new_event_path, :class => 'add' %>
           </ul>
         </div>
-        <div class="clear"></div>
       </div>
-      <div class="gradient"></div>
+
     </div>
+
+    <div class="box network">
+      <h3 id="yourNetwork"><span class="alt">Your Network</span></h3>
+      <ul>
+        <% @user.friends.each do |friend| %>
+          <li><a href="#" title="View <%=h friend.first_name %> <%=h friend.last_name %> 's Profile"><%=h friend.first_name %> <%=h friend.last_name %></a></li>
+        <% end %>
+        <li></li>
+        <li><%= link_to '+ Add To Network', new_search_friend_path, :class => 'add' %></li>
+        <li><%= link_to '+ Invite', new_invitation_path, :class => 'add' %></li>
+      </ul>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div class="gradient"></div>
+</div>

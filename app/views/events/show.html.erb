@@ -1,53 +1,38 @@
 <div class="middle">
   <div class="limiter">
 
-<p>
-  <b>Name:</b>
-  <%=h @event.name %>
-</p>
+      <div class="eventDetails">
+        <ul>
+          <li>Name: <%= @event.name %></li>
+          <li>Date: <%= @event.eventDate %></li>
+          <li>Time:  <%= @event.startTime %> to  <%= @event.endTime %></li>
+          <li>Note:  <%= @event.note %></li>
 
-<p>
-  <b>Eventdate:</b>
-  <%=h @event.event_date_formatted %>
-</p>
+        </ul>
+        </br></br>
+        <h2> Notified Sitters </h2>
+          <table cellpadding="125" cellspacing="125" width="100%">
+            <tr>
+              <th style="text-align:left">Answer</th>
+              <th style="text-align:left">Name</th>
+              <th style="text-align:left">Note</th>
+            </tr>
 
-<p>
-  <b>Starttime:</b>
-  <%=h @event.startTime %>
-</p>
-
-<p>
-  <b>Endtime:</b>
-  <%=h @event.endTime %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%=h @event.note %>
-</p>
-
-<h2>My replies</h2>
-
-<table>
-  <tr>
-    <th>Answer</th>
-    <th>Note</th>
-	<th>Name</th>
-  </tr>
-
-	<% @event.replies.each do |reply| %>
-	  <tr>
-	    <td><%=h reply.answer %></td>
-	    <td><%=h reply.note %></td>
-		<td><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
-	  </tr>
-	<% end %>
-</table>
+              <% @event.replies.each do |reply| %>
+                <tr>
+                  <td width="20%"><%=h reply.answer %></td>
+                  <td width="30%"><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
+                  <td width="50%"><%=h reply.note %></td>
+                </tr>
+              <% end %>
+          </table>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', user_url(current_user) %>
 
+        <%= link_to 'Edit', edit_event_path(@event) %> |
+        <%= link_to 'Back', user_url(current_user) %>
+      </div>
+   
 
   </div>
 </div>

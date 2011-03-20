@@ -24,7 +24,6 @@
 			<% end %>
 		  <% current_user.replies.historic(Time.now).each do |reply| %>
           <div class="eventItem">
-            <a class="eventIndicator" href="#" title="Event Covered"></a>
             <div class="eventDetails">
               <ul>
 				<li><%= link_to reply.event.eventDate, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
