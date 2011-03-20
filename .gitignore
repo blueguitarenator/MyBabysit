@@ -3,5 +3,6 @@ log/*
 script/*
 tmp/*
 workspace.xml
+.idea/workspace.xml
 
 
