@@ -1,59 +1,47 @@
-<% middle do %>
-  <% limiter do %>
+    <div class="middle">
+      <div class="limiter">
+        
+          <h3 id="historicEvents"><span class="alt">Event History</span></h3>
+		  <% if @user.acct_type != 'babysitter' %>
+            <% current_user.events.historic(Time.now).each do |event| %>
 
-	<% if current_user.acct_type != 'babysitter' %>
+	          <div class="eventItem">
 
-		<h1> My Event History </h1>
-		<% current_user.events.historic(Time.now).each do |event| %>
-			----<%= event.name %> <%= event.eventDate %> <%= event.startTime %>----
-			<table>
-			  <tr>
-				<th>Status</th>
-				<th>Babysitter</th>
-			    <th>Sitter Note</th>
-			  </tr>
-			<% event.replies.each do |reply| %>
-			  <tr>
-				<td><%=h reply.answer %>
-				<td><%=h reply.user.full_name %>
-			    <td><%=h reply.note %></td>
-			  </tr>
+	            <div class="eventDetails">
+	              <ul>
+					<li><%= link_to event.name, event, :class => 'eventTitle' %></li>
+	                <li><%= event.eventDate %></li>
+	                <li>Covered from  <%= event.startTime %> to  <%= event.endTime %></li>
+					<% if event.covered %>
+	                  <li>Babysitter: <%= event.sitter_name('Yes') %></li>
+					<% elsif event.pending %>
+					  <li>Pending: <%= event.sitter_name('<NONE>') %></li>
+					<% else %>
+					  <li>Uncovered: <%= link_to 'Invite New Sitter', edit_event_path(event) %></li>
+					<% end %>
+	              </ul>
+	            </div>
+	          </div>
 			<% end %>
-			</table>
-			<!-- 
-		    <%= link_to 'Show', event %>
-		    -->
-			<br />
+		  <% end %>
+		<% if @user.acct_type != 'parent' %>
+		  <% current_user.replies.historic(Time.now).each do |reply| %>
+          <div class="eventItem">
+            <a class="eventIndicator" href="#" title="Event Covered"></a>
+            <div class="eventDetails">
+              <ul>
+				<li><%= link_to reply.event.eventDate, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
+				<li>Family: <%=h reply.event.user.full_name %>
+                <li>Coverage needed:  <%= reply.event.startTime %> to  <%= reply.event.endTime %></li>
+				<li>My reply: <%=h reply.answer %></li>
+              </ul>
+            </div>
+          </div>
+		  <% end %>
 		<% end %>
-	<% end %>
-	<br />
-	<% if current_user.acct_type != 'parent' %>
-		<h1>My Jobs</h1>
-		<table>
-		  <tr>
-		    <th>Answer</th>
-		    <th>Parent's name</th>
-			<th>Date</th>
-		    <th>Start</th>
-		    <th>End</th>
-			<th>Parent's Note</th>
-		  </tr>
-		<% current_user.replies.historic(Time.now).each do |reply| %>
-			<tr>
-			  <td><%=h reply.answer %></td>
-			  <td><%=h reply.event.user.full_name %>
-		      <td><%=h reply.event.eventDate %></td>
-		      <td><%=h reply.event.startTime %></td>
-		      <td><%=h reply.event.endTime %></td>
-		      <td><%=h reply.event.note %></td>
-		<!--
-			  <td><%= link_to 'Show1', event_reply_path(reply.event, reply) %></td>
-			  <td><%= link_to 'Edit', edit_event_reply_path(reply.event, reply) %></td>  
-		-->
-			</tr>
-		<% end %>
-		</table>
-	<% end %>
+        
+        <div class="clear"></div>
+      </div>
+      <div class="gradient"></div>
+    </div>
 
-  <% end %>
-<% end %>

@@ -1,8 +1,8 @@
 
 class AddFriendController < ApplicationController
 
-  # PUT /users/1
-  # PUT /users/1.xml
+  # PUT /add_friend/1
+  # PUT /add_friend/1.xml
   def update
     @user = current_user
     friend = User.find(params[:id])

@@ -26,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :about_us, :only => [:index]
   map.resources :contact_us, :only => [:index]
   map.resources :add_friend, :only => [:update]
+  map.resources :search_friend, :only => [:new, :index]
 
   
   # The priority is based upon order of creation: first created -> highest priority.

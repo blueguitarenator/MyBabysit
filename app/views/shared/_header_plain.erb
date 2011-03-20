@@ -1,14 +1,16 @@
 <% top do %>
   <% limiter do %>
     <% floatL do %>
-      <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
+        <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
     <% end %>
     <%floatR do %>
 		<% if current_user %>
 			<%= link_to "Home", user_url(current_user) %>
 			<%= link_to "Edit Profile", edit_user_path(current_user) %>
 			<%= link_to "History", :controller => 'histories' %>
-			<%= link_to "Logout", logout_path %>
+			<%= link_to "Logout" , logout_path %>
+            <a href="#"><%=h current_user.first_name %></a>
+
 		<% end %>
 	
     <% end %>

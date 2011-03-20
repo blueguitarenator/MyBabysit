@@ -1,8 +1,9 @@
 
 <% middle do %>
   <% limiter do %>
-  	<h1>Register</h1>
-
+    <div class="box first double">
+    <h3 id="createAccount"><span class="alt">Create Account</span></h3>
+  	
 	<% form_for @user, :url => users_path do |f| %>
 	  <%= f.error_messages %>
 	  <%= render :partial => "form", :object => f %>
@@ -15,5 +16,7 @@
 	<% else %>
 		<%= link_to 'Back', login_path %>
     <% end %>
+
+    </div>
   <% end %>
 <% end %>

@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
   
   def sitter_name(status)
     replies.each do |r|
-      if (r.answer == status)
+      if (r.answer.downcase == status.downcase)
         @sitter_name = r.user.first_name + " " + r.user.last_name
       end
     end
@@ -26,7 +26,7 @@ class Event < ActiveRecord::Base
   
   def covered
     replies.each do |r|
-      if (r.answer == 'Yes')
+      if (r.answer.downcase == 'yes')
         return true
       end
     end
@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
   
   def pending
     replies.each do |r|
-      if (r.answer == '<NONE>')
+      if (r.answer.downcase == '<none>')
         return true
       end
     end

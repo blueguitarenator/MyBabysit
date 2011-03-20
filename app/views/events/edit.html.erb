@@ -1,7 +1,7 @@
 <div class="middle">
   <div class="limiter">
 
-<h1>Editing event</h1>
+<h2>Editing event</h2>
 
 <% form_for(@event) do |f| %>
   <%= f.error_messages %>
@@ -32,7 +32,7 @@
   </p>
 <% end %>
 
-<h1>Reply Status</h1>
+<h2>Reply Status</h2>
 <table>
   <tr>
     <th>Answer</th>
@@ -40,7 +40,6 @@
 	<th>Name</th>
   </tr>
 
-<% if @user.acct_type == 'parent' %>
 	<% @event.replies.each do |reply| %>
 	  <tr>
 	    <td><%=h reply.answer %></td>
@@ -48,21 +47,9 @@
 		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
 	  </tr>
 	<% end %>
-<% else %>
-	<% @user.replies.each do |reply| %>
-	<tr>
-	  <td><%=h reply.answer %></td>
-	  <td><%=h reply.note %></td>
-		<td><%=h reply.user.first_name %><%=h reply.user.last_name %></td>
-	  <td><%= link_to 'Show', reply %></td>
-	  <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
-	  <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>
-	</tr>
-	<% end %>	
-<% end %>
 </table>
 
-<h1> Add From My Babysitters </h1>
+<h2> Add From My Babysitters </h2>
 <table>
   <tr>
     <th>First Name</th>

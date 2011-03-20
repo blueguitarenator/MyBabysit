@@ -1,0 +1,14 @@
+<% middle do %>
+  <% limiter do %>
+
+        <% form_tag search_friend_index_path, :method => 'get' do %>
+            <fieldset>
+                <legend>Search </legend>
+                <%= label_tag :search_keywords %><br />
+                <%= text_field_tag :search_keywords %><br />
+            </fieldset>
+            <%= submit_tag "Search", :class => "scButton" %>
+        <% end %>
+
+    <% end %>
+  <% end %>

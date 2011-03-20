@@ -59,11 +59,12 @@
           <h3 id="yourNetwork"><span class="alt">Your Network</span></h3>
           <ul>
 			<% @user.friends.each do |friend| %>
-			  <li><a href="#" title="View Andrew's Profile"><%=h friend.first_name %> <%=h friend.last_name %></a></li>
+			  <li><a href="#" title="View <%=h friend.first_name %> <%=h friend.last_name %> 's Profile"><%=h friend.first_name %> <%=h friend.last_name %></a></li>
 			<% end %>
             <li></li>
+            <li><%= link_to '+ Add New Sitter', new_search_friend_path, :class => 'add' %></li>
+            <li><%= link_to '+ Invite', new_invitation_path, :class => 'add' %></li>
 
-            <li><a class="add" href="#" title="Add New Sitter">+ Add New Sitter</a></li>
           </ul>
         </div>
         <div class="clear"></div>
