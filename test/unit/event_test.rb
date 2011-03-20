@@ -23,7 +23,7 @@ class EventTest < ActiveSupport::TestCase
   
   def test_sitter_name
     assert_equal "Dinner", @dinner.name
-    assert_equal "Amanda Barker", @dinner.sitter_name
+    assert_equal "Amanda Barker", @dinner.sitter_name('Yes')
   end
   
 

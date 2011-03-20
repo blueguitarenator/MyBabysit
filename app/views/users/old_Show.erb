@@ -1,0 +1,100 @@
+
+<!--
+	<%= link_to 'Invite', new_invitation_path %>
+
+	<div id="test">You have a new event pending</div>
+
+	<h1> My Homepage - <%=h @user.first_name %> <%=h @user.last_name%> </h1>
+
+	<% box_first do %>
+		<br />
+		<br />
+
+		<% if @user.acct_type != 'babysitter' %>
+			<% @upcoming_events.each do |event| %>
+				oooo<%= event.name %> <%= event.eventDate %> <%= event.startTime %>oooo
+				<table>
+				  <tr>
+					<th>Status</th>
+					<th>Babysitter</th>
+				    <th>Sitter Note</th>
+				  </tr>
+				<% event.replies.each do |reply| %>
+				  <tr>
+					<td><%=h reply.answer %>
+					<td><%=h reply.user.full_name %>
+				    <td><%=h reply.note %></td>
+				  </tr>
+				<% end %>
+				</table>
+			    <%= link_to 'Show', event %>
+			    <%= link_to 'Edit', edit_event_path(event) %><br /><br />
+			<% end %>
+		<% end %>
+
+		<% if @user.acct_type != 'parent' %>
+		<% @upcoming_replies.each do |reply| %>
+			<table>
+			  <tr>
+			    <th>Answer</th>
+			    <th>Parent's name</th>
+				<th>Date</th>
+			    <th>Start</th>
+			    <th>End</th>
+				<th>Parent's Note</th>
+			  </tr>
+				<tr>
+				  <td><%=h reply.answer %></td>
+				  <td><%=h reply.event.user.full_name %>
+			      <td><%=h reply.event.eventDate %></td>
+			      <td><%=h reply.event.startTime %></td>
+			      <td><%=h reply.event.endTime %></td>
+			      <td><%=h reply.event.note %></td>
+				</tr>
+			</table>
+			  <%= link_to 'Show', event_reply_path(reply.event, reply) %>
+			  <%= link_to 'Edit', edit_event_reply_path(reply.event, reply) %>
+			<% end %>
+		<% end %>
+
+	<% end %>
+	<% box do %>
+		<br />
+		<br />
+		<% form_tag users_url, :method => :get do %>
+		    <fieldset>
+		        <legend>Search </legend>
+		        <%= label_tag :search_keywords %><br />
+		        <%= text_field_tag :search_keywords %><br />
+		    </fieldset>
+		    <%= submit_tag "Search", :class => "scButton" %>
+		<% end %>
+	<% end %>
+	<% box do %>
+		<br />
+		<br />
+
+		<h1> Network </h1>
+		<table>
+		  <tr>
+		    <th>First Name</th>
+		    <th>Last Name</th>
+		  </tr>
+		<% @user.friends.each do |friend| %>
+		  <tr>
+		    <td><%=h friend.first_name %></td>
+		    <td><%=h friend.last_name %></td>
+		  </tr>
+		<% end %>
+		</table>
+
+	<% end %>
+
+	<% if @user.acct_type != "babysitter" %>
+		<%= link_to 'New Event', new_event_path %>
+	<% end %>
+	
+  <% end %>
+<% end %>
+
+-->
