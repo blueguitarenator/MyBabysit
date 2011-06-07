@@ -55,14 +55,14 @@
         <a class="eventIndicator" href="#" title="Add New Event"></a>
         <div class="eventDetails">
           <ul>
-            <%= link_to 'Add New Event', new_event_path, :class => 'add' %>
+            <li><%= link_to '+ Add New Event', new_event_path, :class => 'add' %></li>
           </ul>
         </div>
       </div>
 
     </div>
 
-    <div class="box network">
+    <div class="box secondary">
       <h3 id="yourNetwork"><span class="alt">Your Network</span></h3>
       <ul>
         <% @user.friends.each do |friend| %>
