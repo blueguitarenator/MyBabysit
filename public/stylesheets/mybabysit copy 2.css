@@ -1,0 +1,231 @@
+/*** css reset ***/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+:focus {outline: 0;}
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+span.alt {display:none;}
+
+
+/*** tables still need 'cellspacing="0"' in the markup ***/
+table {border-collapse: collapse; border-spacing: 0;}
+.clear {clear:both;}
+
+
+/*** layout styles ***/
+body {background-color:#DDDDDD;}
+.container {
+  height:100%;
+  margin:0 auto;
+  width:100%;
+}
+
+
+/*** top middle bottom ***/ 
+.limiter {
+  height:auto;
+  margin:0 auto;
+  padding:0 10px;
+  width:730px;
+}
+.top {
+  background:url('../images/bg_top_repeat.png') repeat-x;
+  height:93px;
+  padding-top:15px;
+  width:100%;
+}
+.top .limiter {background:url('../images/bg_top_norepeat.png') no-repeat; height:108px;}
+.middle {
+  background-color:#EEEEEE;
+  min-height:360px;
+  width:100%;
+}
+.middle .gradient {
+  background:url('../images/bg_middle_gradient.png') repeat-x;
+  clear:both;
+  height:3px;
+  width:100%;
+}
+.bottom {
+  height:auto;
+  text-align:center;
+  width:100%;
+}
+.dashboard .middle .limiter {background:url('../images/bg_middle_dashboard.png') repeat-y;}
+
+/*** footer ***/
+.footerNavigation {margin:10px 0;}
+.footerNavigation ul li {display:inline; padding:0 15px;}
+.footerNavigation a {color:#555555;}
+.footerNavigation a:hover {color:#64A7AB;}
+.footerInformation p {color:#AAAAAA;}
+.floatR {float:right;}
+.floatL {float:left;}
+
+
+/*** box elements ***/
+.box {
+  float:left;
+  height:360px;
+  margin-left:20px;
+  width:230px;
+}
+.box.first {margin-left:0;}
+.box.first.double {
+  padding-left:20px;
+  padding-right:20px;
+  width:440px;
+}
+.box p {
+  color:#444444;
+  font-family:Palatino Linotype,Book Antiqua,Palatino,serif;
+  font-size:12px;
+  line-height:18px;
+}
+.dashboard .box {height:auto; padding-top:10px;}
+
+
+/*** links, labels, headers ***/
+a, p, label {
+  font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size:10px;
+  text-decoration:none;
+}
+a.add {font-weight:bold;}
+.newEvent a.add {font-size:14px; margin-top:4px;}
+
+label {color:#FFFFFF;}
+
+h1 {
+  background:url('../images/logo_home.png') no-repeat;
+  display:block;
+  height:55px;
+  width:162px;
+}
+h1 a {
+  display:block;
+  height:100%;
+  width:100%;
+}
+
+
+/*** sitter calling standard button ***/
+.scButton {
+  background:url('../images/button_universal.png') repeat-x;
+  background-position:0 0;
+  border:1px solid #355158;
+  color:#FFFFFF;
+  cursor:pointer;
+  display:inline-block;
+  padding:1px 2px;
+}
+.scButton:active {background:url('../images/button_universal_active.png') repeat-x;}
+.scButton input {
+  background:none;
+  border:0;
+  color:#FFFFFF;
+  cursor:pointer;
+  display:inline-block;
+  padding:1px 2px;
+}
+
+/*** login form ***/
+.login table tr td {padding:0 4px 3px;}
+input.inputUsername,
+input.inputPassword {width:135px;}
+
+/*** h3 sprite ***/
+.box h3 {
+  background:url('../images/headers_sprite.png') no-repeat;
+  height:25px;
+  margin:3px;
+  width:200px;
+}
+.box h3#createAccount {background-position:0 0;}
+.box h3#buildNetwork {background-position:0 -25px;}
+.box h3#fillEvenings {background-position:0 -50px;}
+.box h3#upcomingEvents {background-position:0 -75px;}
+.box h3#yourNetwork {background-position:0 -100px;}
+
+/*** action button sprite ***/
+a#registerNow,
+a#addEvent,
+a#addSitter {
+  background:url('../images/button_sprite.png') no-repeat;
+  display:block;
+  height:32px;
+  margin:6px;
+  width:165px;
+}
+a#registerNow {background-position:0 0;}
+a#registerNow:hover {background-position:0 -32px;}
+a#registerNow:active {background-position:0 -64px;}
+a#addEvent {background-position:-165px 0;}
+a#addEvent:hover {background-position:-165px -32px;}
+a#addEvent:active {background-position:-165px -64px;}
+a#addSitter {background-position:-330px 0;}
+a#addSitter:hover {background-position:-330px -32px;}
+a#addSitter:active {background-position:-330px -64px;}
+
+/*** event item and network and details ***/
+.eventItem {
+  height:80px;
+  padding:10px;
+  border-top:1px solid #BBBBBB;
+}
+.eventItem.first {border-top:none;}
+
+.eventItem a,
+.network a {color:#64A7AB;}
+
+.eventItem a:hover,
+.network a:hover {color:#2E717B;}
+
+a.eventTitle {
+  font-size:24px;
+  font-weight:bold;
+  text-decoration:none;
+}
+.eventIndicator {
+  background:url('../images/ui_indicator_sprite.png') no-repeat;
+  float:left;
+  height:20px;
+  width:25px;
+}
+.eventIndicator.uncovered {background-position:0 -18px;}
+.eventItem.newEvent .eventIndicator {background-position:-18px 0;}
+
+.eventDetails {
+  color:#555555;
+  float:left;
+  font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size:12px;
+  text-decoration:none;
+  height:100%;
+}
+.eventDetails ul li {padding-bottom:5px;}
+.network ul {padding:7px 0 0 10px;}
+.network ul li {padding-top:3px;}
