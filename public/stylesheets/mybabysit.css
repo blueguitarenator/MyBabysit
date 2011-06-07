@@ -63,18 +63,18 @@ body {background-color:#DDDDDD;}
   min-height:360px;
   width:100%;
 }
-.middle .gradient {
+.gradient {
   background:url('../images/bg_middle_gradient.png') repeat-x;
   clear:both;
   height:3px;
   width:100%;
 }
 .bottom {
-  height:auto;
+  height:100px;
   text-align:center;
   width:100%;
 }
-.dashboard .middle .limiter {background:url('../images/bg_middle_dashboard.png') repeat-y;}
+.split .middle .limiter {background:url('../images/bg_middle_split.png') repeat-y;}
 
 /*** footer ***/
 .footerNavigation {margin:10px 0;}
@@ -89,8 +89,9 @@ body {background-color:#DDDDDD;}
 /*** box elements ***/
 .box {
   float:left;
-  height:360px;
+  height:350px;
   margin-left:20px;
+  padding-top:10px;
   width:230px;
 }
 .box.first {margin-left:0;}
@@ -104,9 +105,11 @@ body {background-color:#DDDDDD;}
   font-family:Palatino Linotype,Book Antiqua,Palatino,serif;
   font-size:12px;
   line-height:18px;
+  padding:5px 0 10px;
 }
-.dashboard .box {height:auto; padding-top:10px;}
+.dashboard .box {height:auto;}
 
+.box.secondary {padding-right:20px;width:210px;}
 
 /*** links, labels, headers ***/
 a, p, label {
@@ -118,6 +121,7 @@ a.add {font-weight:bold;}
 .newEvent a.add {font-size:14px; margin-top:4px;}
 
 label {color:#FFFFFF;}
+.create label {color:#555555;}
 
 h1 {
   background:url('../images/logo_home.png') no-repeat;
@@ -130,6 +134,13 @@ h1 a {
   height:100%;
   width:100%;
 }
+
+/*** forms ***/
+form table tr td {padding:0 4px 2px;}
+form.create  table {margin-top:10px;}
+input.short {width:135px;}
+input.wide {width:200px;}
+.create input {margin-bottom:12px;}
 
 
 /*** sitter calling standard button ***/
@@ -149,13 +160,9 @@ h1 a {
   color:#FFFFFF;
   cursor:pointer;
   display:inline-block;
+  margin:0;
   padding:1px 2px;
 }
-
-/*** login form ***/
-.login table tr td {padding:0 4px 3px;}
-input.inputUsername,
-input.inputPassword {width:135px;}
 
 /*** h3 sprite ***/
 .box h3 {
@@ -169,6 +176,8 @@ input.inputPassword {width:135px;}
 .box h3#fillEvenings {background-position:0 -50px;}
 .box h3#upcomingEvents {background-position:0 -75px;}
 .box h3#yourNetwork {background-position:0 -100px;}
+.box h3#siteFeatures {background-position:0 -125px;}
+.box h3#aboutSitter {background-position:0 -150px;}
 
 /*** action button sprite ***/
 a#registerNow,
@@ -199,10 +208,10 @@ a#addSitter:active {background-position:-330px -64px;}
 .eventItem.first {border-top:none;}
 
 .eventItem a,
-.network a {color:#64A7AB;}
+.secondary a {color:#64A7AB;}
 
 .eventItem a:hover,
-.network a:hover {color:#2E717B;}
+.secondary a:hover {color:#2E717B;}
 
 a.eventTitle {
   font-size:24px;
@@ -227,5 +236,5 @@ a.eventTitle {
   height:100%;
 }
 .eventDetails ul li {padding-bottom:5px;}
-.network ul {padding:7px 0 0 10px;}
-.network ul li {padding-top:3px;}
+.secondary ul {padding:8px 0 0 10px;}
+.secondary ul li {padding-top:3px;}

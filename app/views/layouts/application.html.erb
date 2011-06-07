@@ -13,8 +13,8 @@
   <%= javascript_include_tag 'jquery.datePicker.js' %>
 </head>
 <body>
-	<p style="color: green"><%= notice %></p>
-	<div class="dashboard">
+    <%= notice %>
+	<div class="split">
 	  <div class="container">
 		<% if (current_user) %>
 			<%= render("shared/header_plain")%>
@@ -22,21 +22,6 @@
 			<%= render("shared/header")%>
 		<% end %>
 		
-<!-- 
-	<div id="user_nav">
-		<% if current_user %>
-			<%= link_to "Home", user_url(current_user) %>
-			<%= link_to "Edit Profile", edit_user_path(current_user) %>
-			<%= link_to "History", :controller => 'histories' %>
-			<%= link_to "Logout", logout_path %>
-		<% else %>
-		
-			<%= link_to "Register", new_user_path %>
-			<%= link_to "Login", login_path %>
-	
-		<% end %>
-	</div>
--->
 	<%= yield %>
 	<%= render("shared/bottom")%>
   </div>

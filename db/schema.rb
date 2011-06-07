@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20110205180157) do
     t.string   "first_name",                         :null => false
     t.string   "last_name",                          :null => false
     t.string   "email",                              :null => false
-    t.string   "acct_type",                          :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false
     t.string   "persistence_token",                  :null => false
