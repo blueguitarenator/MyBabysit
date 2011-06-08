@@ -1,16 +1,26 @@
 <% middle do %>
   <% limiter do %>
+    <div class="box first double">
 
-	<h2>Edit My Account</h2>
+	  <h2>Edit My Account</h2>
 
-	<% form_for @user, :url => user_path do |f| %>
-	  <%= f.error_messages %>
-	  <%= render :partial => "form", :object => f %>
-	  <%= f.submit "Update" %>
-	<% end %>
+	  <% form_for @user, :html => {:class => "create"}, :url => user_path do |f| %>
+	    <%= f.error_messages %>
+	    <%= render :partial => "form", :object => f %>
+	    <%= f.submit "Update" %>
+	  <% end %>
 
-	<br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
-	<br /><%= link_to "My Profile", user_path(@user) %>
+	  <br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
+	  <br /><%= link_to "My Profile", user_path(@user) %>
+    </div>
+    <div class="box secondary">
+      <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat cursus justo, non bibendum nisi tristique at. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam a nulla est, varius condimentum erat. Aliquam erat volutpat. Duis pellentesque tincidunt justo, non mollis arcu adipiscing eu. Quisque bibendum nulla vel tellus laoreet vehicula.</p>
+    </div>
+    <div class="clear"></div>
+    </div>
+  </div>
+  <div class="gradient"></div>
 
   <% end %>
 <% end %>

@@ -1,41 +1,63 @@
 <div class="middle">
   <div class="limiter">
 
+    <div class="box first double">
+		<strong> New Event </strong>
+		<% form_for @event, :html => {:class => "create"} do |form| %>
+		  <%= form.error_messages %>
+		
+			<table>
+			  <tbody>
+			    <tr>
+			      <td><%= form.label :name %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.text_field :name, :class => "wide" %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.label :eventDate %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.text_field :eventDate, :class => "wide" %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.label :startTime %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.text_field :startTime, :class => "wide" %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.label :endTime %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.text_field :endTime, :class => "wide" %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.label :note %></td>
+			    </tr>
+			    <tr>
+			      <td><%= form.text_field :note, :class => "wide" %></td>
+			    </tr>
+			  </tbody>
+			</table>
+			
+		  <p>
+		    <%= form.submit 'Create' %>
+		  </p>
+		<% end %>
 
-<h2>New event</h2>
 
-<% form_for(@event) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :eventDate %><br />
-    <%= f.text_field :eventDate %>
-    <div class="dp-choose-date" />
-  </p>
-
-  <p>
-    <%= f.label :startTime %><br />
-    <%= f.text_field :startTime %>
-  </p>
-  <p>
-    <%= f.label :endTime %><br />
-    <%= f.text_field :endTime %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-
-<%= link_to 'Back', user_url(current_user) %>
+		<%= link_to 'Back', user_url(current_user) %>
+	</div>
+	<div class="box secondary">
+        <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat cursus justo, non bibendum nisi tristique at. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam a nulla est, varius condimentum erat. Aliquam erat volutpat. Duis pellentesque tincidunt justo, non mollis arcu adipiscing eu. Quisque bibendum nulla vel tellus laoreet vehicula.</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+   </div>
+  <div class="gradient"></div>
+	
   </div>
 </div>
 
